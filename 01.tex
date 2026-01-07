@@ -1,0 +1,393 @@
+\section{Algebras}
+
+We begin with a brief review of algebras.
+This material is assumed to be known, as it is covered in the Master's-level course on associative algebras.
+
+\index{Algebra}
+An \emph{algebra} (over the field $K$) is a vector space (over $K$)
+with an associative multiplication $A\times A\to A$ such that
+\[
+a(\lambda b+\mu c)=\lambda(ab)+\mu(ac)\quad\text{and}\quad
+(\lambda a+\mu b)c=\lambda(ac)+\mu (bc)
+ \]
+for all $a,b,c\in A$ and $\lambda,\mu\in K$, and
+that contains an element $1_A\in A$ such that
+ \[
+ 1_Aa=a1_A=a
+ \]
+ for all $a\in A$.
+
+\begin{exercise}
+\label{xca:center}
+Prove that a ring $A$ is an algebra over $K$
+if and only if
+there is a ring homomorphism $K\to Z(A)$, where $Z(A)=\{a\in A:ab=ba\text{ for a
+ll $b\in A$}\}$ is the \emph{center}
+of $A$,
+such that $1_K\to 1_A$.
+\end{exercise}
+
+\index{Algebra!commutative}
+An algebra $A$ is \emph{commutative} if $ab=ba$ for all $a,b\in A$.
+\index{Algebra!dimension}
+The \emph{dimension} of an algebra $A$ is the dimension of $A$ as a vector space. 
+
+Examples of algebras 
+occur frequently in nature: 
+\begin{enumerate}
+    \item The field $\R$ is a real algebra and
+        $\C$ is a complex algebra. Moreover, $\C$ is also a real algebra.
+    \item The polynomial ring $\C[X]$ is an algebra over $\C$. 
+    \item $M_n(\C)$ is an algebra over $\C$. 
+\end{enumerate}
+
+\begin{example}
+        Let $n\in\Z_{>0}$. Then $\C[X]/(X^n)$ is a finite-dimensional complex algebra. 
+        This algebra is called the \emph{truncated polynomial algebra}.
+\end{example}
+
+\begin{example}
+        Let $G$ be a finite group. The vector space
+        $\C[G]$ with basis $\{g:g\in G\}$
+        is an algebra with multiplication
+        \[
+        \left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
+        =\sum_{g,h\in G}\lambda_g\mu_h(gh).
+        \]
+        Note that $\dim\C[G]=|G|$ and
+        $\C[G]$ is commutative if and only $G$ is abelian.
+        This is the (complex) \emph{group algebra} of $G$.
+\end{example}
+
+\index{Algebra!homomorphism}
+Let $K$ be a field and $A$ and $B$ be $K$-algebras.
+An algebra \emph{homomorphism} is a ring homomorphism $f\colon A\to B$ that
+is also a $K$-linear map.
+
+\begin{exercise}
+    \label{xca:algebra}
+    Prove that 
+    an \emph{algebra} over $K$ is vector space equipped with linear maps 
+    $m\colon A\otimes A\to A$ and 
+    $u\colon K\to A$ such that the diagrams
+    \[
+    \begin{tikzcd}
+A \otimes A \otimes A \arrow[r, "m \otimes \id"] \arrow[d, "\id \otimes m"'] & A \otimes A \arrow[d, "m"] \\
+A \otimes A \arrow[r, "m"'] & A
+\end{tikzcd}
+\quad\text{and}\quad 
+\begin{tikzcd}
+K \otimes A \arrow[r, "u \otimes \id"] \arrow[dr, "\simeq"'] & A \otimes A \arrow[d, "m"] & A \otimes K \arrow[l, "\id \otimes u"'] \arrow[dl, "\simeq"] \\
+& A &
+\end{tikzcd}
+\]
+are both commutative. The maps $m$ and $u$ are called 
+the \emph{multiplication} and \emph{unit} of the algebra, 
+respectively. 
+\end{exercise}
+
+\begin{exercise}
+    \label{xca:algebra_diagrams}
+    Formulate the definitions of commutativity and algebra homomorphism using commutative diagrams.
+\end{exercise}
+
+\section{Coalgebras}
+
+Why did we end the previous section with a diagrammatic reformulation of the definition of an algebra?
+Because diagrams offer several advantages. One key benefit is that they allow us to dualize definitions by simply reversing the arrows in the diagram. The dual of an algebra, known as a \emph{coalgebra}, turns out to be of fundamental importance in many areas of mathematics, including the theory of Hopf algebras.
+
+\begin{definition}
+    \label{def:coalgebra}
+    \index{Coalgebra}
+    A \emph{coalgebra} over $K$ is vector space (over $K$) equipped with linear maps $\Delta\colon C\to C\otimes C$ and 
+    $\epsilon\colon C\to K$ such that the diagrams 
+    \[
+\begin{tikzcd}
+C \otimes C \otimes C & C \otimes C \arrow[l, "\Delta \otimes \id"'] \\
+C \otimes C\arrow[u, "\id\otimes\Delta"]   & C\arrow[l, "\Delta"]\arrow[u, "\Delta"']
+\end{tikzcd}
+\quad\text{and}\quad 
+\begin{tikzcd}
+K\otimes C  & C \otimes C \otimes C\arrow[l, "\epsilon \otimes \id"']\arrow[r, "\id\otimes\epsilon"]  & C \otimes C \\
+& C\arrow[lu, "\simeq"]\arrow[u, "\Delta"']\arrow[ru, "\simeq"']\ &
+\end{tikzcd}
+\]
+are both commutative. 
+\end{definition}
+
+\index{Comultiplication}
+\index{Counit}
+The maps $\Delta$ and $\epsilon$ in Definition~\ref{def:coalgebra}
+are called the \emph{comultiplication} and the \emph{counit}, respectively. 
+
+Now we dualize the notions introduced in Exercise~\ref{xca:algebra_diagrams}.
+
+\begin{definition}
+\index{Coalgebra!cocommutative}
+\index{Flip} 
+A coalgebra $C$ is said to be \emph{cocommutative} if 
+the diagram 
+\[
+    \begin{tikzcd}
+C \arrow[r, "\Delta"] \arrow[dr, "\Delta"'] & C \otimes C \arrow[d, "\tau"] \\
+& C \otimes C
+\end{tikzcd}
+\]
+commutes, where $\tau\colon C\otimes C\to C\otimes C$, $x\otimes y\mapsto y\otimes x$, is the \emph{flip map}. 
+\end{definition}
+
+\begin{definition}
+\index{Coalgebra!homomorphism}
+Let $C$ and $D$ be coalgebras. A coalgebra \emph{homomorphism}
+is a linear map $f\colon C\to D$ such that 
+the diagrams 
+\[
+\begin{tikzcd}
+C \arrow[r, "\Delta_C"] \arrow[d, "f"'] & C \otimes C \arrow[d, "f \otimes f"] \\
+D \arrow[r, "\Delta_D"'] & D \otimes D
+\end{tikzcd}
+\quad\text{and}\quad 
+\begin{tikzcd}
+C \arrow[r, "\epsilon"] \arrow[d, "f"'] & K \\
+D \arrow[ur, "\epsilon"'] 
+\end{tikzcd}
+\]
+are both commutative. 
+\end{definition}
+
+We now present several examples of coalgebras.
+The reader is encouraged to verify the details that confirm these structures satisfy the axioms of a coalgebra.
+
+\begin{example}
+    Let $S$ be a non-empty set. Then the complex vector space $\C[S]$ with basis $\{s:s\in S\}$ is a coalgebra
+    with $\Delta(s)=s\otimes s$ and 
+    $\epsilon(s)=1$ for $s\in S$.
+\end{example}
+
+\begin{example}
+    Let $V$ be a complex vector space. Then 
+    $\C\oplus V$ with 
+    \begin{align*}
+        \Delta(1)&=1\otimes 1, && 
+        \epsilon(1)=1, &&
+        \Delta(v)=v\otimes 1+1\otimes v, && 
+        \epsilon(v)=0,
+    \end{align*}
+    for $v\in V$, is a coalgebra. 
+\end{example}
+
+\begin{example}
+    The polynomial ring $\C[X]$ is a coalgebra
+    with 
+    \[
+    \Delta(X^n)=\sum_{k=0}^n\binom{n}{k}X^i\otimes X^{n-i},\quad \epsilon(X^n)=\begin{cases}
+        1 & \text{if $n=0$,}\\
+        0 & \text{otherwise.}
+    \end{cases}
+    \]
+\end{example}
+% \begin{exercise}
+    
+% \end{exercise}
+
+\subsection{Sweedler's notation}
+\index{Sweedler!notation}
+
+Although coalgebras are just as natural as algebras, working with them can sometimes be more challenging due to the need to manipulate long expressions involving tensors. Fortunately, we have Sweedler's notation, which simplifies these computations significantly. The reader should be aware that this notation may appear confusing at first, but it is perfectly valid and extremely useful.
+
+Let $C$ be a coalgebra and $c\in C$. Then $\Delta(c)$ is
+a finite sum of the form 
+\[
+\Delta(c)=\sum_{j=1}^n c_{1j}\otimes c_{2j}\in C\otimes C
+\]
+for elements $c_{ij}\in C$, $i\in\{1,2\}$ 
+and $j\in\{1,\dots,n\}$. We introduce the notation 
+\[
+\Delta(c)=\sum c_{1}\otimes c_{2}.
+\]
+% Thus, for example,  
+% \begin{align*}
+%     \Delta(\id\otimes\Delta)(c)
+%     =\Delta\left(c_{(1)}\otimes\sum\Delta(c_{2})\right)
+%     =\sum c_{(1)}\otimes c_{(2,1)}\otimes c_{(2,2)}
+% \end{align*}
+% Similarly, 
+% \[
+% \Delta(\Delta\otimes\id)(c)=\sum c_{(1,1)}\otimes c_{(1,2)}\otimes c_{2}.
+% \]
+Write 
+% The coasociative means that 
+% \[
+% \Delta(\id\otimes\Delta)(c)=
+% \sum c_{(1)}\otimes c_{(2,1)}\otimes c_{(2,2)}
+% =c_{(1,1)}\otimes c_{(1,2)}\otimes c_{2}
+% =\Delta(\Delta\otimes\id)(c). 
+% \]
+% Thus we write 
+\begin{align*}
+(\id\otimes\Delta)\Delta(c)&=\sum c_1\otimes\Delta(c_2)=\sum c_1\otimes c_{2,1}\otimes c_{2,2},\\
+\shortintertext{and}
+(\Delta\otimes\id)\Delta(c)&=\sum\Delta(c_1)\otimes c_2
+    =\sum c_{1,1}\otimes c_{1,2}\otimes c_{2}. 
+\end{align*}
+% \Delta(\id\otimes\Delta)(c)=\Delta(\Delta\otimes\id)(c)
+% =\sum c_{(1)}\otimes c_{2}\otimes c_{3}. 
+% \]
+Thanks to the coassociativity, we can write 
+\[
+\sum c_{1}\otimes c_{2}\otimes c_{3}
+=\sum c_1\otimes c_{2,1}\otimes c_{2,2}
+=\sum c_{1,1}\otimes c_{1,2}\otimes c_{2}.
+\]
+
+In general, if $\Delta_1=\Delta$ and 
+$\Delta_n=(\Delta\otimes\id^{\otimes(n-1)})\Delta_{n-1}\colon C\to C^{\otimes(n+1)}$ for $n\geq2$, 
+we write 
+\[
+\Delta_n(c)=\sum c_{1}\otimes\cdots\otimes c_{n}.
+\]
+
+Although the above notation may look unusual, it provides a very convenient way to write commutative diagrams. 
+
+\begin{exercise}
+\label{xca:Hopf}
+    Reformulate the definition of a coalgebra in Sweedler’s notation.
+\end{exercise}
+
+\begin{exercise}
+\label{xca:Sweedler}
+    Verify the following identities:
+    \begin{align}
+        &\sum\epsilon(c_{2})\otimes \Delta(c_{1})
+        =\Delta(c).\\
+        &\sum\Delta(c_{2})\otimes \epsilon(c_{1})=\Delta(c).\\
+        &\sum c_{1}\otimes\epsilon (c_{3})\otimes c_{2}=\Delta(c)\\
+        &
+        \sum c_{1}\otimes c_{3}\otimes \epsilon (c_{2})=\Delta(c).\\
+        &\sum \epsilon(c_{1})\otimes c_{3}\otimes c_{2}=
+        \sum c_{2}\otimes c_{1}.\\
+        &\sum \epsilon(c_{1})\otimes\epsilon(c_{3})\otimes c_{2}=c.
+    \end{align}
+\end{exercise}
+
+\index{Dual!of a vector space}
+\index{Dual!of a linear map}
+Let $V$ be a vector space. The \emph{dual} of $V$ 
+is the vector space $V^*=\Hom(V,K)$. It comes with 
+an evaluation map
+\[
+V^*\otimes V\to K,\quad 
+(f,v)\mapsto f(v).
+\]
+
+Sometimes, we use the notation $\langle f,v\rangle=f(v)$. 
+
+If $T\colon V\to W$ is a linear map, 
+the \emph{dual} of $T$ is the linear 
+map $T^*\colon W^*\to V^*$, $f\mapsto T^*(f)$, where 
+\[
+\langle T^*(f),v\rangle=T^*(f)(v)=f(T(v))=\langle f,T(v)\rangle.
+\]
+
+\begin{example}
+\index{Dual!algebra of a coalgebra}
+\label{exa:dual_coalgebra}
+    Let $C$ be a coalgebra. The dual 
+    $C^*=\Hom(C,K)$ is an algebra
+    with multiplication 
+    $m(f\otimes g)(c)=\sum f(c_1)g(c_2)$ 
+    and unit $u(f)(c)=f(c)$. A direct calculation 
+    shows that if $C$ is cocommutative, then $C^*$ is commutative. The algebra $C^*$ is called the
+    \emph{dual algebra} of $C$. 
+\end{example}
+
+In Example~\ref{exa:dual_coalgebra} we use 
+the canonical 
+embedding $C^*\otimes C^*\to (C\otimes C)^*$ given by 
+\[
+\langle f\otimes g,x\otimes y\rangle
+=\langle f,x\rangle\langle g,y\rangle
+\]
+for $f,g\in C^*$ and $x,y\in C$. 
+
+
+\begin{example}
+\index{Dual!coalgebra of an algebra}
+\label{exa:dual_algebra}
+    Let $A$ be a finite-dimensional algebra. Then $A^*$ is 
+    a coalgebra with multiplication 
+    $\Delta(f)(a\otimes b)=f(ab)$ and counit 
+    $\epsilon(f)(a)=\epsilon(a)$. A direct calculation shows that 
+    if $A$ is commutative, then $A^*$ is cocommutative. The  
+    coalgebra $A^*$ is called the \emph{dual coalgebra} of $A$. 
+\end{example}
+
+Why do we need finite-dimensional algebras in Example~\ref{exa:dual_algebra}? 
+
+\subsection{Group-like and primitive elements}
+
+\begin{definition}
+    \index{Group-like element}
+    Let $C$ be a coalgebra. An element $c\in C$ is 
+    a \emph{group-like} if $\epsilon(c)=1$ and 
+    $\Delta(c)=c\otimes c$.  
+\end{definition}
+
+The set of group-like elements of a coalgebra $C$ 
+is written $G(C)$. 
+
+\begin{proposition}
+    Group-like elements are linearly independent. 
+\end{proposition}
+
+\begin{proof}
+    Let $C$ be a coalgebra such that $G(C)$ is linearly 
+    dependent. Let $\{c,c_1,\dots,c_n\}$ be a linearly dependent set of minimal size $n+1$. Without loss of generality, 
+    we may assume that 
+    $\{c_1,\dots,c_n\}$ is linearly independent and 
+    $c\in\operatorname{span}_K\{c_1,\dots,c_n\}$. Thus 
+    \[
+    c=\lambda_1c_1+\cdots+\lambda_nc_n
+    \]
+    for $\lambda_1,\dots,\lambda_n\in K$, all differnt from
+    zero. 
+    Applying $\Delta$, 
+    \[
+    \sum_{i=1}^{n}\sum_{j=1}^{n}\lambda_i\lambda_jc_i\otimes c_j=c\otimes c=\Delta(c)
+    =\sum_{i=1}^{n}\lambda_i\Delta(c_i)
+    =\sum_{i=1}^{n}\lambda_ic_i\otimes c_i.
+    \]
+    Since $\{c_i\otimes c_j:1\leq i,j\leq n\}$ is linearly
+    independent, comparing coefficients, we 
+    get that $n=1$ and hence $c=\lambda_1c_1$. Then 
+    $1=\epsilon(c)=\lambda_1\epsilon(c_1)=\lambda_1$ 
+    and therefore $c=c_1$, a contradiction. 
+\end{proof}
+
+\begin{example}
+    Let $G$ be a finite group and $C=K[G]$. Then 
+    $G(C)=G$.  
+\end{example}
+
+\begin{definition}
+  \index{Primitive element}
+  Let $C$ be a coalgebra and $x\in C$. We say that 
+  $x$ is \emph{primitive} if $\Delta(x)=1\otimes x+x\otimes 1$. 
+\end{definition}
+
+For a coalgebra $C$, $\operatorname{Prim}(C)$ denotes 
+the set of primitive elements of $C$. 
+
+\begin{exercise}
+  Let $C$ be a coalgebra and $x\in\operatorname{Prim}(C)$. 
+  Prove that $\epsilon(x)=0$. 
+\end{exercise}
+
+\begin{example}
+    Let $\mathfrak{g}$ be a Lie algebra 
+    and $C=\mathcal{U}(\mathfrak{g})$. If $\operatorname{char}(K)=0$, then $P(C)=\mathfrak{g}$. Otherwise, if 
+    $\operatorname{char}(K)=p>0$, then 
+    $P(C)=\operatorname{span}_K\{x^{p^k}:k\geq0\}$.
+\end{example}
+
+

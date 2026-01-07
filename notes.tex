@@ -1,0 +1,69 @@
+\documentclass[12pt]{amsproc}
+
+\newcommand{\course}{Hopf algebras}
+
+\input{mystuff}
+\usetikzlibrary{calc}
+
+\newcommand{\ydH}{\prescript{H}{H}{\mathcal{YD}}}
+\newcommand{\lmod}[1]{\prescript{}{#1}{\mathcal{M}}}
+\newcommand{\rmod}[1]{\mathcal{M}_{#1}}
+\newcommand{\lcomod}[1]{\prescript{#1}{}{\mathcal{M}}}
+\newcommand{\rcomod}[1]{\mathcal{M}^{#1}}
+
+
+
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\pagenumbering{roman}
+
+\begin{abstract}
+    The notes correspond to the bachelor 
+    course \textbf{Hopf algebras} of the 
+    Vrije Universiteit Brussel, 
+    Faculty of Sciences, 
+    Department of Mathematics and Data Sciences. 
+\end{abstract}
+
+\maketitle
+
+\setcounter{tocdepth}{1}
+\tableofcontents 
+
+\clearpage
+\pagenumbering{arabic}
+
+\include{introduction}
+%\input{subsections}
+
+\input{01}
+\input{02}
+%\input{03}
+%\input{04}
+%\input{05}
+%\input{06}
+%\input{07}
+%\input{08}
+%\input{09}
+%\input{10}
+%\input{11}
+%\input{12}
+
+%\include{magma} 
+%\include{solutions}
+
+\newpage 
+
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\fancyhead[L]{\course}
+\setlength{\headheight}{14pt}
+
+\bibliographystyle{abbrv}
+\bibliography{refs}
+
+\printindex
+
+\end{document}
