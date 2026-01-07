@@ -1,0 +1,874 @@
+\section{Pointed Hopf algebras}
+
+\begin{definition}
+    \index{Coalgebra!simple}
+    A coalgebra $C$ is said to be \emph{simple} if it has no
+    non-zero proper subcoalgebras. 
+\end{definition}
+
+\begin{definition}
+    \index{Coalgebra!pointed}
+    A coalgebra $C$ is said to be \emph{pointed} if all its 
+    simple subcoalgebras are one-dimensional. 
+\end{definition}
+
+\begin{exercise}
+\label{xca:Cdual_on_C}
+    Let $C$ be a coalgebra. Prove that 
+    $C^*$ acts on $C$ by
+    \[
+    f\rightharpoonup c=\sum f(c_2)c_1.
+    \]
+    Moreover, $g(f\rightharpoonup c)=(gf)(c)$ for 
+    all $f,g\in C^*$ and $c\in C$. 
+\end{exercise}
+
+For a vector space $V$ and a subspace $W\subseteq V$, let 
+\[
+W^\perp=\{f\in V^*:f(w)=0\text{ for all $w\in W$}\}.
+\]
+Then $W^{\perp\perp}=W$. 
+Similarly, for a subspace $U$ of $V^*$, let 
+\[
+U^\perp=\{v\in V:\alpha(v)=0\text{ for all $\alpha\in U$}\}.
+\]
+Then $U\subseteq U^{\perp\perp}$. Note that
+if $\dim V=\infty$, it can happen that $U\subsetneq U^{\perp\perp}$. 
+
+\begin{exercise}
+\label{xca:dual}
+    Let $C$ be a coalgebra. 
+    \begin{enumerate}
+        \item Let $U$, $V$ and $W$ be subspaces of $C$ such that 
+    $\Delta(U)\subseteq V\otimes C+C\otimes W$. Prove that 
+    $V^\perp W^\perp\subseteq U^\perp$. 
+    \item Let $I$, $J$ and $K$ be subspaces of $C^*$ 
+    such that $IJ\subseteq K$. Prove that 
+    \[
+    \Delta(K^\perp)\subseteq I^\perp\otimes C+C\otimes J^\perp.
+    \]
+    \end{enumerate}
+\end{exercise}
+
+% \begin{exercise}
+%     Let $C$ be a coalgebra. Let $I$, $J$ and $K$ be subspaces of $C^*$ 
+%     such that $IJ\subseteq K$. Prove that 
+%     $\Delta(K^\perp)\subseteq I^\perp\otimes C+C\otimes J^\perp$. 
+% \end{exercise}
+
+\begin{definition}
+    \index{Coideal}
+    Let $C$ be a coalgebra. A \emph{left coideal} of $C$ 
+    is a subspace $D\subseteq C$ such that 
+    $\Delta(D)\subseteq C\otimes D$. 
+\end{definition}
+
+Similarly, one defines a \emph{right coideal} as a subspace
+$D$ of $C$ such that $\Delta(D)\subseteq D\otimes C$. 
+
+\begin{lemma}
+\label{lem:correspondence}
+    Let $C$ be a finite-dimensional coalgebra. 
+    \begin{enumerate}
+        \item $D$ is a left (right) coideal of $C$ 
+        if and only if $D^\perp$ is a left  (right)
+        ideal of $C^*$. 
+        %\item $D$ is a right coideal of $C$ 
+        %if and only if $D^\perp$ is a right  
+        %ideal of $C^*$. 
+        \item $I$ is left (right) ideal of $C^*$ if and only  
+        $I^\perp$ is a left (right) coideal of $C$.
+        %$\dim C<\infty$. 
+        % \item If $I$ is right ideal of $C^*$, then 
+        % $I^\perp$ is a right coideal of $C$. The converse holds if $\dim C<\infty$. 
+        \item $D$ is a simple subcoalgebra of $C$ 
+        if and only if $D^*$ is a simple algebra. 
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}[Sketch of the proof]
+    The proofs of the corresponding results for right objects are similar and are omitted here.
+    \begin{enumerate}
+        \item If we assume that $D$ is a left coideal of $C$, then the result 
+            follows from Exercise~\ref{xca:dual}(1). The converse follows from (2). 
+        % Assume that $D$ is a left coideal of $C$. Then  
+        % $\Delta(D)\subseteq C\otimes D$. Let $\alpha\in C^*$, $\beta\in D^\perp$ and $x\in D$. We want to show that
+        % $C^*D^\perp\subseteq D^\perp$. We compute 
+        % \[
+        % (\alpha\beta)(x)=(\alpha\otimes\beta)(\Delta(x))
+        % =\sum\alpha(x_1)\beta(x_2)\in \alpha(C)\beta(D)=0.
+        % \]
+        % The converse will follow from (2), as... 
+
+        \item If we assume that $I$ is a left ideal of $C^*$, the claim 
+        follows from Exercise~\ref{xca:dual}(2). For the converse, note
+        that $I^{\perp\perp}=I$ and use (1). 
+        \item Note that $D$ is a subcoalgebra if and only if 
+        $D$ is both left and right coideal. Thus the claim follows from (1) and (2).\qedhere 
+    \end{enumerate}
+\end{proof}
+
+Note that the finite-dimensionality assumption in Lemma~\ref{lem:correspondence} 
+is only used in one of the implications of the second item. 
+
+\begin{theorem}
+    Any cocommutative complex coalgebra is pointed.  
+\end{theorem}
+
+\begin{proof}
+    Let $C$ be a cocommutative complex coalgebra and 
+    $D$ a simple subcoalgebra of $C$. Since $D$ is cocommutative and $\dim D<\infty$, it follows that 
+    $D^*$ is a finite-dimensional commutative simple algebra (see Lemma~\ref{lem:correspondence}). Thus $D^*$ is a finite-dimensional extension of $\C$. Hence $D\simeq\C$ and 
+    $C$ is pointed. 
+\end{proof}
+
+\section{The Cartier--Gabriel--Kostant theorem}
+
+We first describe 
+the semi-direct product (or smash product) 
+of Hopf algebras. 
+
+% Maybe better here the full smash product of Molnar
+
+\begin{exercise}
+\label{xca:smash}
+Let $H$ be a complex cocommutative Hopf algebra and 
+$\mathfrak{g}=\operatorname{Prim}(H)$ and 
+$G$ the group 
+of group-like elements.  
+\begin{enumerate}
+    \item Prove that $G$ acts on $\mathcal{U}(\mathfrak{g})$.    
+    \item Prove that $\mathcal{U}(\mathfrak{g})\otimes\C[G]$ 
+    with the coproduct induced by the tensor product of 
+    coalgebras and multiplication
+    \[
+    (x\otimes g)(y\otimes h)=x(gyg^{-1})\otimes gh
+    \]
+    is a Hopf algebra. 
+\end{enumerate}
+\end{exercise}
+
+% 2.3.2 of SPLIT EXTENSION CLASSIFIERS IN THE CATEGORY OF
+% COCOMMUTATIVE HOPF ALGEBRAS
+% molnar paper 
+%\index{Smash product}
+The Hopf algebra of Exercise~\ref{xca:smash} is 
+the \emph{smash product} of 
+$\mathcal{U}(\mathfrak{g})$ and $\C[G]$
+and is denoted by $\mathcal{U}(\mathfrak{g})\rtimes\C[G]$; see Exercise\framebox{?}.%~\ref{xca:}. 
+
+% Cartier 4.5.1
+\begin{theorem}[Cartier--Gabriel--Kostant]
+    \index{Cartier--Gabriel--Kostant theorem}
+    \label{thm:CartierGabrielKostant}
+    Let $H$ be a cocommutative complex Hopf algebra 
+    and $\mathfrak{g}=\operatorname{Prim}(H)$ and $G$ 
+    the group of group-like elements. Then 
+    $H\simeq\mathcal{U}(\mathfrak{g})\rtimes\C[G]$ as 
+    Hopf algebras. 
+\end{theorem}
+
+\begin{proof}
+    See~\cite[Theorem 4.5.1]{zbMATH07372929}. 
+\end{proof}
+
+% What about the splitting? 
+% https://mathoverflow.net/questions/259307/cartier-kostant-milnor-moore-theorem
+
+\begin{corollary}
+\label{cor:CartierGabrielKostant}
+    Any finite-dimensional cocommutative complex Hopf algebra
+    is a group algebra. 
+\end{corollary}
+
+\begin{exercise}
+    Prove Corollary~\ref{cor:CartierGabrielKostant}
+\end{exercise}
+
+\section{The Kac--Paljutkin Hopf algebra}
+
+\index{Kac--Paljutkin Hopf algebra}
+Let $H$ be the algebra given by generators 
+$x,y,z$ and relations 
+\[
+x^2=y^2=z^2=1,\quad 
+xz=zx,\quad 
+zy=yz,\quad 
+xyz=yx.
+\]
+A routine calculation shows that $A$ is a bialgebra 
+with 
+comultiplication 
+\[
+\Delta(x)=xe_0\otimes x+xe_1\otimes y,
+\quad 
+\Delta(y)=ye_1\otimes x+ye_0\otimes y,
+\quad 
+\Delta(z)=z\otimes z,
+\]
+where $e_0=\frac12(1+z)$ and $e_1=\frac12(1-z)$, and 
+counit 
+\[
+\epsilon(x)=\epsilon(y)=\epsilon(z)=1.
+\]
+Moreover, $A$ is a Hopf algebra 
+with antipode 
+\[
+S(x)=xe_0+ye_1,\quad 
+S(y)=xe_1+ye_0,\quad 
+S(z)=z.
+\]
+
+\begin{exercise}
+\label{xca: KacPaljutkin}
+    Prove that $H$
+    is semisimple and non-pointed. 
+\end{exercise}
+
+% guiar mejor este ejercicio
+% ver paper de BURCIU
+
+\section{Braided monoidal categories}
+\begin{definition}
+\index{Monoidal category}
+A \emph{monoidal category} is a tuple
+$(\mathcal{C},\otimes,a,\mathbb{I},l,r)$, where $\mathcal{C}$ is a category,
+$\otimes:\mathcal{C}\times\mathcal{C}\to\mathcal{C}$ is a funtor, $\mathbb{I}$
+is an object of $\mathcal{C}$, $a_{U,V,W}:(U\otimes V)\otimes W\to
+U\otimes(V\otimes W)$ is a natural isomorphism such that 
+\begin{equation}
+(\id_{U}\otimes a_{V,W,X})a_{U,V\otimes W,X}(a_{U,V,W}\otimes\id_{X})=a_{U,V,W\otimes X}a_{U\otimes V,W,X}\label{eq:pentagon}
+\end{equation}
+for all objects $U$,$V$, $W$ of $\mathcal{C}$ and $r_{U}:U\otimes\mathbb{I}\to U$
+and $l_{U}:\mathbb{I}\otimes U\to U$ are natural isomorphism such
+that 
+\begin{equation}
+(\id_{V}\otimes l_{W})a_{V,I,W}=r_{V}\otimes\id_{W}\label{eq:triangles}
+\end{equation}
+for all objects $U,W$ of $\mathcal{C}$.
+\end{definition}
+
+\begin{definition}
+\index{Monoidal category!strict}
+A monoidal category $\mathcal{C}$ is called \emph{strict} if the natural
+isomorphisms $a$, $l$ and $r$ are identities. 
+\end{definition}
+
+Without loss of generality, we may assume that our monoidal categories are strict. Thanks to 
+MacLane's coherence theorem~\cite[Theorem XI.5.3]{zbMATH00706259}, every monoidal category is monoidally equivalent to a strict one. This allows us to avoid dealing with the natural isomorphisms $a$, $l$ and $r$ in our computations, simplifying the presentation of braided structures.
+
+\index{Category!of left modules}
+\index{Category!of right modules}
+For a Hopf algebra $H$, 
+we write $\lmod{H}$ to denote the category of 
+left $H$-modules and $\rmod{H}$ 
+to denote the category of right $H$-modules, with $H$-module 
+homomorphisms as morphisms in each case.
+
+\begin{example}
+\index{Tensor product!of modules}
+Let $H$ be a Hopf algebra. Then $\lmod{H}$ is a monoidal
+category.  Recall that if $V$ and $W$ are two left $H$-modules, the tensor
+product of $V$ and $W$ is defined by 
+\[
+h\rightarrow(v\otimes w)=\sum (h_{1}\rightarrow v)\otimes(h_{2}\rightarrow w)
+\]
+for all $h\in H$, $v\in V$, $w\in W$. 
+\end{example}
+
+\index{Category!of left comodulesa}
+\index{Category!of right comodules}
+For a Hopf algebra $H$, 
+we write $\lcomod{H}$ to denote the category of 
+left $H$-comodules and $\rcomod{H}$ 
+to denote the category of right $H$-comodules, with $H$-comodule 
+homomorphisms as morphisms in each case.
+
+\begin{example}
+\index{Tensor product!of comodules}
+Let $H$ be a Hopf algebra. Then $\lcomod{H}$ is a monoidal
+category.  Recall that if $V$ and $W$ are two left $H$-comodules, the tensor
+product of $V$ and $W$ is defined defined by 
+\[
+\delta(v\otimes w)=\sum v_{-1}w_{-1}\otimes(v_0\otimes w_0)
+\]
+for all $v\in V$, $w\in W$.
+\end{example}
+
+% \begin{example}
+% \index{tensor product!of Yetter-Drinfeld modules}
+% Let $H$ be a Hopf algebra with invertible antipode. Then
+% $\ydH$ is a monoidal category. 
+% \end{example}
+
+\begin{definition}
+\index{Monoidal category!braided}
+A monoidal category $\mathcal{C}$ is \emph{braided} if there
+exists a natural isomorphism $c:\otimes\to\otimes^{\mathrm{op}}$
+such that
+\begin{align}
+c_{U,V\otimes W} & =(\id_{V}\otimes c_{U,W})(c_{U,V}\otimes\id_{W}),\label{eq:braided1}\\
+c_{U\otimes V,W} & =(c_{U,W}\otimes\id_{V})(\id_{U}\otimes c_{V,W})\label{eq:braided2}
+\end{align}
+for all objects $U,V,W$ of $\mathcal{C}$. 
+\end{definition}
+
+\begin{definition}
+\index{Monoidal category!symmetric}
+A braided monoidal category is \emph{symmetric} if 
+\[
+c_{U,V}c_{V,U}=\id_{U\otimes V}
+\]
+for all objects $U,V$ of $\mathcal{C}$.
+\end{definition}
+
+The naturality of the braiding $c$ means that if $V,W$ are objects
+of $\mathcal{C}$ then there exists a morphism $c_{V,W}:V\otimes W\to W\otimes V$
+such that the diagram 
+\[
+\begin{tikzcd}
+V \otimes W \arrow[d, "f \otimes g"'] \arrow[r, "c_{V,W}"] & W \otimes V \arrow[d, "g \otimes f"] \\
+V' \otimes W' \arrow[r, "c_{V',W'}"'] & W' \otimes V'
+\end{tikzcd}
+\]
+is commutative for all pair of morphisms $f:V\to V'$ and $g:W\to W'$.
+
+\begin{proposition}
+Let $U$, $V$ and $W$ be objects of a braided monoidal category $\mathcal{C}$.
+Then 
+\begin{align*}
+(c_{V,W}\otimes\textrm{id}_{U})(\textrm{id}_{V}&\otimes c_{U,W})(c_{U,V}\otimes\textrm{id}_{W})\\
+&=(\textrm{id}_{W}\otimes c_{U,V})(c_{U,W}\otimes\textrm{id}_{V})(\textrm{id}_{U}\otimes c_{V,W}).
+\end{align*}
+\end{proposition}
+
+\begin{proof}
+It follows from Equations \eqref{eq:braided1}--\eqref{eq:braided2} and the
+diagram
+\[
+\begin{tikzcd}
+(U \otimes V) \otimes W \arrow[d, "c_{U,V} \otimes \mathrm{id}_W"'] \arrow[r, "c_{U \otimes V, W}"] 
+  & W \otimes (U \otimes V) \arrow[d, "\mathrm{id}_W \otimes c_{U,V}"] \\
+(V \otimes U) \otimes W \arrow[r, "c_{V \otimes U, W}"'] 
+  & W \otimes (V \otimes U)
+\end{tikzcd}
+\]
+obtained from the naturality of the braiding with
+$f=c_{U,V}\otimes\id_W$ and $g=\id_W$.
+\end{proof}
+
+%\begin{example}
+%Let $H$ be a quasitriangular Hopf algebra. The category of left $H$-modules is
+%a braided monoidal category.
+%\end{example}
+% \begin{example}
+% Let $H$ be a Hopf algebra with invertible antipode. 
+% Then $\ydH$ is a braided
+% monoidal category.
+% \end{example}
+
+\begin{exercise}
+\label{xca:QT}
+\index{Hopf algebra!quasitriangular}
+    Let $H$ be a Hopf algebra. Prove that 
+    $\lmod{H}$ is a braided
+    monoidal category if and only if $H$ is \emph{quasitriangular}, that is, there exists an invertible element
+    $R=\sum_{i}a_{i}\otimes b_{i}\in H\otimes H$ such that 
+\begin{align*}
+\sum h_{2}a_{i}\otimes h_{1}b_{i} & =\sum a_{i}h_{1}\otimes b_{i}h_{2},\\
+\sum a_{i,1}\otimes a_{i,2}\otimes b_{i} & =\sum a_{i}\otimes a_{j}\otimes b_{i}b_{j},\\
+\sum a_{i}\otimes b_{i,1}\otimes b_{i,2} & =\sum a_{i}a_{j}\otimes b_{j}\otimes b_{i}.
+\end{align*}
+for all $h\in H$. 
+\end{exercise} 
+
+Similarly, $\lcomod{H}$ is braided if and only if $H$ is \emph{coquasitriangular}, a notion that is dual to quasitriangular. See~\cite[\S 10.2]{zbMATH00482792} for the details. 
+
+\begin{exercise}
+\label{xca:T}
+\index{Hopf algebra!triangular}
+Let $H$ be a Hopf algebra. Prove that 
+    $\lmod{H}$ is a symmetric 
+    if and only if $H$ is \emph{triangular}, that is 
+    $(H,R)$ 
+    is quasitriangular 
+    and $\tau(R)=R^{-1}$. 
+\end{exercise}
+
+\subsection{Algebras in categories}
+Now there is a natural way of defining an algebra in a monoidal category. 
+
+\begin{definition}
+\index{Algebra!in a monoidal category}
+Let $\mathcal{C}$ be a monoidal category. An \emph{algebra} in
+$\mathcal{C}$ is a triple $(A,m,u)$, where $A$ is an object of
+$\mathcal{C}$, $m\in\Hom(A\otimes A,A)$ and $u\in\Hom(\mathbb{I},A)$ such that 
+\begin{gather*}
+m(\id\otimes m)=m(m\otimes\id),\\
+m(\id\otimes u)=\id=m(u\otimes\id).
+\end{gather*}
+\end{definition}
+
+Let $A$ and $B$ be algebras in $\mathcal{C}$ and $f\in\Hom(A,B)$.
+Then $f$ is a \emph{morphism} (of algebras in $\mathcal{C}$)
+if $m_{B}(f\otimes f)=fm_{A}$ and $fu_{A}=u_{B}$. This allows
+us to define the category $\operatorname{Alg}(\mathcal{C})$
+of algebras in $\mathcal{C}$. 
+
+\begin{example}
+An algebra in the category of vector spaces (with the usual tensor product) is an algebra in
+the usual sense.
+\end{example}
+
+\begin{example}
+\index{Module!algebra}
+\index{Comodule!algebra}
+Let $H$ be a Hopf algebra. An algebra in $\lmod{H}$ is a left $H$-module-algebra. 
+An algebra in $\lcomod{H}$ 
+is a left 
+$H$-comodule-algebra.
+\end{example}
+
+
+
+%\begin{exercise}
+%Prove that 
+%This is equivalent to ask for
+%$\delta$ to be a morphism of algebras. 
+%\end{exercise}
+
+\begin{example}
+\index{Tensor product!of algebras in braided categories}
+Let $(\mathcal{C},c)$ be a braided category and let $A$ and $B$ be two algebras
+in $\mathcal{C}$. Then $A\otimes B$ is an algebra in $\mathcal{C}$ with
+multiplication 
+\[
+m_{A\otimes B}=(m_A\otimes m_B)(\id_A\otimes c_{B,A}\otimes \id_B).
+\]
+\end{example}
+
+\subsection{Coalgebras in categories}
+Similarly one defines coalgebras in categories.
+
+\begin{definition}
+\index{Coalgebra!in a monoidal category}
+Let $\mathcal{C}$ be a monoidal category. A \emph{coalgebra}
+in $\mathcal{C}$ is a triple $(C,\Delta,\epsilon)$, where
+$C$ is an object of $\mathcal{C}$, $\Delta\in\Hom(C,C\otimes C)$
+and $\epsilon\in\Hom(C,\mathbb{I})$, such that 
+\begin{gather*}
+(\Delta\otimes\id)\Delta=(\id\otimes\Delta)\Delta\quad\text{and}\quad 
+(\id\otimes\epsilon)\Delta=(\epsilon\otimes\id)\Delta=\id.
+\end{gather*}
+\end{definition}
+
+Let $C$ and $D$ be two coalgebras in $\mathcal{C}$ and $f\in\Hom(C,D)$.
+Then $f$ is a \emph{morphism} (of coalgebras in $\mathcal{C}$)
+if $\Delta_{D}f=(f\otimes f)\Delta_{C}$ and $\epsilon_{D}f=\epsilon_{C}$. 
+This allows us to define the category $\mathrm{Coalg}(\mathcal{C})$
+of coalgebras in $\mathcal{C}$.
+
+\begin{example}
+A coalgebra in the category of vector spaces 
+is a coalgebra in the usual sense.
+\end{example}
+
+\begin{example}
+\index{Module!coalgebra}
+Let $H$ be a Hopf algebra. 
+A coalgebra in $\lmod{H}$ is a left $H$-module-coalgebra.
+\end{example}
+
+%\begin{exercise}
+%This is equivalent to ask for the action $\to$ to be a morphism of
+%coalgebras.
+%\end{exercise}
+
+\begin{example}
+\index{Comodule!coalgebra}
+Let $H$ be a Hopf algebra. 
+A coalgebra in $\lcomod{H}$ 
+is a left $H$-comodule-coalgebra.
+\end{example}
+
+\begin{example}
+\index{Tensor product!of coalgebras in braided categories}
+Let $(\mathcal{C},c)$ be a braided category and let $C$ and $D$ be two
+coalgebras in $\mathcal{C}$. Then $C\otimes D$ is an coalgebra in $\mathcal{C}$
+with comultiplication 
+\[
+\Delta_{C\otimes D}=(\id_C\otimes c_{C,D}\otimes \id_D)(\Delta_C\otimes\Delta_D).
+\]
+\end{example}
+
+\begin{definition}
+\index{Bialgebra!in a braided category}
+Let $\mathcal{C}$ be a braided monoidal category with braiding $c$.
+A \emph{bialgebra} in $\mathcal{C}$ is a tuple $(B,m,\eta,\Delta,\epsilon)$,
+where $(B,m,\eta)$ is an algebra in $\mathcal{C}$, $(B,\Delta,\epsilon)$
+is a coalgebra in $\mathcal{C}$, such that $\Delta\in\Hom(B,B\otimes B)$
+and $\epsilon\in\Hom(B,\mathbb{I})$ are morphism of algebras.
+\end{definition}
+
+% Here $B\otimes B$ is the algebra in $\mathcal{C}$ given by the product
+% \[
+% (m_{B}\otimes m_{B})(\id\otimes c_{B,B}\otimes\id).
+% \]
+
+\begin{exercise}
+Let $H$ be a quasitriangular Hopf algebra with $R=\sum a_{i}\otimes b_{i}$.
+Then $\lmod{H}$ is braided with braiding
+\[
+c_{V,W}(v\otimes w)=\sum_{i}b_{i}\cdot w\otimes a_{i}\cdot v.
+\]
+\end{exercise}
+
+\begin{exercise}
+    Prove that $H$ is a bialgebra in $\lmod{H}$ if $H$ is an algebra
+and a coalgebra in $\lmod{H}$ and 
+\[
+\sum (hh')_{1}\otimes(hh')_{2}=\sum_{i}\sum h_{1}(b_{i}\cdot h'_{1})\otimes(a_{i}\cdot h_{2})h'_{2}
+\]
+for all $h,h'\in H$.
+\end{exercise}
+
+\section{Yetter--Drinfeld modules}
+
+\begin{definition}
+\index{Yetter--Drinfeld module}
+Let $H$ be a Hopf algebra. A \emph{Yetter--Drifeld module} over $H$ is a
+triple $(V,\rightarrow,\delta)$, where $(V,\rightarrow)$ is a left $H$-module,
+$(V,\delta)$ is a left $H$-comodule, and such that 
+\begin{equation}
+\delta(h\rightarrow v)=\sum h_{1}v_{-1}Sh_{3}\otimes h_{2}\rightarrow v_{0}\label{eq:YD}
+\end{equation}
+for all $h\in H$, $v\in V$. 
+\end{definition}
+
+\begin{definition}
+\index{Yetter--Drinfeld module!homomorphism}
+A \emph{homomorphism} of Yetter--Drinfeld modules over $H$ 
+is a homomorphism of left $H$-modules and left $H$-comodules. 
+\end{definition}
+
+\index{Category!of Yetter--Drinfeld modules}
+The category of Yetter--Drinfeld
+modules will be denoted by $\ydH$.
+
+\begin{example}
+Let $H$ be a Hopf algebra with the trivial action and coaction on itself, that is 
+$h\rightarrow x=\epsilon(h)x$ and $\delta(h)=1\otimes h$ for all $h,x\in H$.
+Then $H$ is a Yetter--Drinfeld module over $H$.
+\end{example}
+
+\begin{example}
+Let $H$ be a Hopf algebra. Then $(H,\mathrm{adj},\Delta)$ and
+$(H,m,\mathrm{coadj})$ are Yetter--Drinfeld modules over $H$.
+\end{example}
+
+\begin{exercise}
+\label{xca:YD_condition}
+Prove that~\eqref{eq:YD} can be replaced by 
+\begin{equation}
+\label{eq:left_left_YD_equivalent}
+\sum h_{1}v_{-1}\otimes(h_{2}\rightarrow v_{0})
+=\sum (h_{1}\rightarrow v)_{-1}h_{2}\otimes(h_{1}\rightarrow v)_{0}.
+\end{equation}
+\end{exercise}
+
+\begin{exercise}
+Let $G$ be a group and $H=K[G]$. Assume that
+$(V,\rightarrow)$ is a left $H$-module, and $(V,\delta)$ is a left
+$H$-comodule. Prove the following statements:
+\begin{enumerate}
+\item $V=\oplus_{g\in G}V_{g}$, where $V_{g}=\{v\in V\mid\delta(v)=g\otimes v\}$.  
+\item The triple $(V,\rightarrow,\delta)$ is a Yetter--Drinfeld
+module if and only if $h\rightarrow V_{g}\subseteq V_{hgh^{-1}}$ for all
+$g,h\in H$.
+\end{enumerate}
+\end{exercise}
+
+\begin{exercise}\label{xca:YD_tensor}
+Let $V$ and $W$ be two Yetter--Drinfeld modules over $H$. Then $V\otimes W$ is a
+Yetter--Drinfeld over $H$, where 
+\begin{align*}
+h\rightarrow(v\otimes w) & =\sum (h_{1}\rightarrow v)\otimes(h_{2}\rightarrow w),\\
+\delta(v\otimes w) & =\sum v_{-1}w_{-1}\otimes(v_{0}\otimes w_{0})
+\end{align*}
+for all $h\in H$, $v\in V$, $w\in W$.
+\end{exercise}
+
+Let $H$ be a Hopf algebra with invertible antipode. For any pair $V$ and $W$ of
+Yetter--Drinfeld modules over $H$, we consider the map 
+\begin{align*}
+c_{V,W}\colon V\otimes W&\to W\otimes V\\
+v\otimes w&\mapsto \sum (v_{-1}\rightarrow w)\otimes v_{0}.
+\end{align*}
+
+\begin{proposition}
+The map $c_{V,W}$ is an isomorphism in $\ydH$.
+\end{proposition}
+
+\begin{proof}
+The map $c$ is invertible and the inverse is 
+\begin{align*}
+c_{V,W}^{-1}:W\otimes V & \to V\otimes W\\
+w\otimes v & \mapsto \sum v_{0}\otimes(S^{-1}(v_{-1})\to w)
+\end{align*}
+since
+\begin{align*}
+c_{V,W}^{-1}c_{V,W}(v\otimes w) & =\sum c_{V,W}^{-1}((v_{-1}\to w)\otimes v_{0})\\
+ & =\sum v_{0,0}\otimes(S^{-1}(v_{0,-1})\to(v_{-1}\to w))\\
+ & =\sum v_{0,0}\otimes(S^{-1}(v_{0,-1})v_{-1}\to w)\\
+ & =\sum v_{0}\otimes(S^{-1}(v_{-1})v_{-2}\to w)\\
+ & =\sum v_{0}\otimes(\epsilon(v_{-1})1\to w)\\
+ & =v\otimes w,
+\end{align*}
+and similarly $c_{V,W}c_{V,W}^{-1}(w\otimes v)=w\otimes v$. 
+
+Now we prove that $c_{V,W}$ is a homomorphism of $H$-modules: 
+\begin{align*}
+c_{V,W}(h\rightarrow (v\otimes w))&=\sum c_{V,W}(h_1\rightarrow v\otimes h_2\rightarrow w)\\
+&=\sum (h_1\rightarrow v)_{-1}\rightarrow(h_2\rightarrow w)\otimes(h_1\rightarrow v)_0\\
+&=\sum (h_{11}v_{-1}Sh_{13})\rightarrow(h_2\rightarrow w)\otimes h_{12}\rightarrow v_0\\
+&=\sum (h_1v_{-1}(Sh_3)h_4)\rightarrow w\otimes h_2\rightarrow v_0\\
+&=\sum (h_1v_{-1})\rightarrow w\otimes h_2\rightarrow v_0\\
+&=\sum h_1\rightarrow(v_{-1}\rightarrow w)\otimes h_2\rightarrow v_0\\
+&=\sum h\rightarrow((v_{-1}\rightarrow w)\otimes v_0).
+\end{align*}
+
+To prove that $c_{V,W}$ is a homomorphism of comodules we need $(\id\otimes
+c)\delta=\delta c$.  We compute:
+\[
+(\id\otimes c)\delta(v\otimes w)=\sum v_{-1}w_{-1}\otimes (v_{0,-1}\rightarrow w_0)\otimes v_{0,0}.
+\]
+On the other hand,
+\begin{align*}
+\delta(c(v\otimes w)&=\sum\delta(v_{-1}\rightarrow w\otimes v_0)\\
+&=\sum (v_{-1}\rightarrow w)_{-1}v_{0,-1}\otimes(v_{-1}\rightarrow w)_0\otimes v_{0,0}\\
+&=\sum (v_{-2}\rightarrow w)_{-1}v_{-1}\otimes (v_{-2}\rightarrow w)_0\otimes v_0\\
+&=\sum v_{-2,1}w_{-1}S(v_{-2,3})v_{-1}\otimes(v_{-2,2}\rightarrow w_0)\otimes v_0\\
+&=\sum v_{-4}w_{-1}S(v_{-2})v_{-1}\otimes (v_{-3}\rightarrow w_0)\otimes v_0\\
+&=\sum v_{-2}w_{-1}\otimes(v_{-1}\rightarrow w_0)\otimes v_0.\qedhere
+\end{align*}
+\end{proof}
+
+\begin{exercise}
+\label{xca:YD_hexagons}
+Let $H$ be a Hopf algebra, and let $U$, $V$ and $W$
+be three objects of $\ydH$. Prove the following statements: 
+\begin{align}
+c_{U\otimes V,W} & =(c_{U,W}\otimes\id_{V})(\id_{U}\otimes c_{V,W}).\label{eq:(cx1)(1xc)}\\
+c_{U,V\otimes W} & =(\id_{V}\otimes c_{U,W})(c_{U,V}\otimes\id_{W})\label{eq:(1xc)(cx1)}.
+\end{align}
+\end{exercise}
+
+\begin{exercise}
+\label{xca:YD_naturality}
+Let $H$ be a Hopf algebra. Prove that 
+\[
+c_{V',W'}(f\otimes g)=(g\otimes f)c_{W,V}
+\]
+for all Yetter--Drinfeld modules homomorphisms $f:V\to V'$ and $g:W\to W'$. 
+\end{exercise}
+
+\begin{theorem}
+\label{theorem:YD_braid_equation}
+Let $H$ be a Hopf algebra with invertible antipode, and let $U,V,W$
+be Yetter--Drinfeld modules over $H$. Then 
+%\begin{align*}
+%c_{V,W}:V\otimes W&\to W\otimes V\\
+%v\otimes w&\mapsto (v_{-1}\rightarrow w)\otimes v_{0},
+%\end{align*}
+%is an isomorphism in $_{H}^{H}\mathcal{YD}$ and it is a solution of the braid
+%equation:
+\begin{align*}
+(c_{V,W}\otimes\textrm{id}_{U})(\textrm{id}_{V}&\otimes c_{U,W})(c_{U,V}\otimes\textrm{id}_{W})\\
+&=(\textrm{id}_{W}\otimes c_{U,V})(c_{U,W}\otimes\textrm{id}_{V})(\textrm{id}_{U}\otimes c_{V,W}).
+\end{align*}
+\end{theorem}
+
+\begin{proof} 
+It follows immediately from Exercise~\ref{xca:YD_naturality} with
+$f=c_{U,V}\otimes\id_W$ and $g=\id_W$ and Exercise~\ref{xca:YD_hexagons}.
+\end{proof}
+
+% \begin{exercise}
+% Prove Theorem \ref{theorem:YD_braid_equation} without using Exercises
+% \ref{xca:YD_naturality} and \ref{xca:YD_hexagons}.
+% \end{exercise}
+
+%It remains
+%to prove that $c$ is natural, i.e., 
+%\[
+%(g\otimes f)c_{V,W}=c_{V',W'}(f\otimes g).
+%\]
+%So let $V$, $V'$, $W$ and $W'$ be objects of $_{H}^{H}\mathcal{YD}$,
+%and $f\in\Hom(V,V')$, $g\in\Hom(W,W')$. We compute 
+%\begin{align*}
+%(g\otimes f)c_{V,W}(v\otimes w) & =(g\otimes f)(v_{-1}\to w\otimes v_{0})\\
+% & =g(v_{-1}\to w)\otimes f(v_{0})\\
+% & =v_{-1}\to g(w)\otimes f(v_{0})
+%\end{align*}
+%and
+%\begin{align*}
+%c_{V',W'}(f\otimes g)(v\otimes w) & =f(v)\otimes g(w)\\
+% & =f(v)_{-1}\to g(w)\otimes f(v)_{0}\\
+% & =v_{-1}\to g(w)\otimes f(v_{0})
+%\end{align*}
+%(here we use that $f$ is morphism of $H$-comodules). Hence the claim
+%holds.
+
+%\subsection{The category $_H\mathcal{YD}^H$}
+
+% We will also work with the following variation of what a Yetter--Drinfeld module
+% is: An object $V$ in the category 
+% $\prescript{}{H}{\mathcal{YD}^H}$
+% $_{H}\mathcal{YD}^{H}$ 
+% is a triple
+% $(V,\rightarrow,\delta)$, where $(V,\rightarrow)$ is a left $H$-module,
+% $(V,\delta)$ is a right $H$-comodule, such that
+% \[
+% h_{1}\rightarrow v_{0}\otimes h_{2}v_{1}=(h_{2}\rightarrow v)_{0}\otimes(h_{2}\rightarrow v)_{1}h_{1},
+% \]
+% or equivalently
+% \[
+% \delta(h\rightarrow v)=h_{2}\rightarrow v_{0}\otimes h_{3}v_{1}S^{-1}h_{1},
+% \]
+% for all $v\in V$, $h\in H$. 
+% %\end{rem}
+
+% %\begin{exercise}
+% %Let $H$ be a Hopf algebra with bijective antipode. Prove that the categories
+% %$_{H}^{H}\mathcal{YD}$ and $_{H}\mathcal{YD}^{H}$ are equivalent.
+% %\end{exercise}
+% %
+% %\begin{solution}
+% %Let $(V,\rightarrow,\delta)$ be an object of $_{H}^{H}\mathcal{YD}$, where we
+% %write $\delta(v)=v_{-1}\otimes v_{0}$. Let $\rho:V\to V\otimes H$ be the linear
+% %map defined by $\rho(v)=Sv_{1}\otimes v_{0}$. Then $(V,\rightarrow,\rho)$ is an
+% %object of $_{H}\mathcal{YD}^{H}$. The converse is similar. 
+% %\end{solution}
+
+% \begin{exercise}
+% Let $H$ be a finite-dimensional Hopf algebra with bijective antipode.  Assume that
+% $(V,\rightarrow,\delta_R)$ is an object of $_{H}\mathcal{YD}^{H}$ and define
+% \[
+% \delta_L(v)=S(v_1)\otimes v_0
+% \]
+% for all $v\in V$.  Prove that
+% $(V,\rightarrow,\delta_L)$ is an object of $\ydH$. 
+% Conversely, if $(V,\rightarrow,\delta_L)$ is an object of $\ydH$,
+% define \[
+% \delta_R(v)=v_0\otimes S^{-1}v_{-1}
+% \]
+% for all $v\in V$. Prove that
+% $(V,\rightarrow,\delta_R)$ is an object of $_H\mathcal{YD}^H$.
+% \end{exercise}
+
+%\subsection{Yetter--Drinfeld modules and the Drinfeld double}
+% There is a deep connection between Yetter--Drinfeld modules and the Drinfeld double. To conclude this section we will prove 
+% that there is an equivalence between $_H\mathcal{YD}^H$ and $_{\mathcal{D}(H)}\mathcal{M}$. 
+
+% \begin{exercise}
+% Let $H$ be a finite-dimensional Hopf algebra. Assume that $\{h_i\}$ is a basis
+% of $H$, and let $\{h^i\}$ be its dual basis.  Prove that the element
+% \[
+% \sum h^i\otimes h_i
+% \]
+% does not depend on the pair of dual basis $\{h_i\}$ and $\{h^i\}$.
+% \end{exercise}
+
+% \begin{lemma}
+% \label{lem:DH_compatibility}
+% Let $H$ be a finite-dimensional Hopf algebra. Then  $V$ is a left
+% $\mathcal{D}(H)$-module if and only if $V$ is a left $H$-module, a left
+% $H^{*}$-module and 
+% \begin{eqnarray}
+% h\cdot(f\cdot v) & = & f(S^{-1}(h_{3})?h_{1})\cdot(h_{2}\cdot v)\label{eq:compatibility_D(H)}
+% \end{eqnarray}
+% for all $h\in H$, $f\in H^{*}$.
+% \end{lemma}
+
+% \begin{proof}
+% We compute 
+% \begin{align*}
+% (1\otimes h)\cdot((f\otimes1)\cdot v) & =((1\otimes h)(f\otimes1))\cdot v\\
+%  & =(f(S^{-1}(h_{3})?h_{1})\otimes h_{2})\cdot v\\
+%  & =(f(S^{-1}(h_{3})?h_{1})\otimes1)(1\otimes h_{2}))\cdot v\\
+%  & =f(S^{-1}(h_{3})?h_{1})\cdot(h_{2}\cdot v).
+% \end{align*}
+% and the claim follows. 
+% \end{proof}
+
+% \begin{lemma}
+% \label{lem:DH_to_YD}
+% Let $H$ be a finite-dimensional Hopf algebra and assume that $\{h_i\}$ is a basis
+% of $H$, and let $\{h^i\}$ be its dual basis.  
+% Let $(V,\cdot)$ be a left $\mathcal{D}(H)$-module. For any $v\in V$ define 
+% \[
+% \delta(v)=\sum h^i\cdot v\otimes h_i.
+% \]
+% Then the triple $(V,\cdot,\delta)$ is an object of $_H\mathcal{YD}^H$.
+% \end{lemma}
+
+% \begin{proof}
+% We prove the compatibility condition
+% \begin{equation}
+% \label{eq:DH_to_YD}
+% \sum h^i\cdot (v\cdot v)\otimes h_i=\sum x_2\cdot(h^i\cdot v)\otimes x_3h_iS^{-1}x_1
+% \end{equation}
+% for all $x\in H$, $v\in V$. Let $f\in H^*$ and apply $(\id\otimes f)$ to the
+% left hand side of \eqref{eq:DH_to_YD} to obtain
+% \[
+% \sum h^i\cdot (x\cdot v)f(h_i)=f\cdot (x\cdot v).
+% \]
+% On the other hand, applying $(\id\otimes f)$ to the right hand side of
+% \eqref{eq:DH_to_YD} we obtain
+% \begin{align*}
+% %(\id\otimes f)&\left(\sum x_2\cdot (h^i\cdot v)\otimes x_3h_1S^{-1}x_1\right)\\
+% \sum x_2\cdot(h^i\cdot v) f(x_3h_iS^{-1}x_1)&=
+% x_2\cdot\left( f(x_3?S^{-1}x_1)\cdot v\right)\\
+% &=f(x_3S^{-1}x_{23}?x_{21}S^{-1}x_1)\cdot (x_{22}\cdot v)\\
+% &=f(x_5S^{-1}x_4?x_2S^{-1}x_1)\cdot(x_3\cdot v)\\
+% &=f\cdot (x\cdot v)
+% \end{align*}
+% and the claim follows.
+% \end{proof}
+
+% \begin{lemma}
+% \label{lem:YD_to_DH}
+% Let $H$ be a finite-dimensional Hopf algebra. Let 
+% $(V,\cdot,\delta)$ be an object of $_H\mathcal{YD}^H$. Then $V$ is a left
+% $\mathcal{D}(H)$-module via 
+% \[
+% (f\otimes h)\cdot v=\langle f\mid (h\cdot v)_1\rangle (h\cdot v)_0
+% \]
+% for all $f\in H^*$, $h\in H$ and $v\in V$.
+% \end{lemma}
+
+% \begin{proof}
+% By Lemma \ref{lem:DH_compatibility}, we need prove that
+% \[
+% h \cdot(f\cdot v)=\langle f\mid v_1\rangle(h\cdot v_0)
+% \]
+% for all $f\in H^*$, $h\in H$, $v\in V$. We compute:
+% \begin{align*}
+% f(S^{-1}h_3?h_1)\cdot(h_2\cdot v)&=\langle f\mid S^{-1}h_3(h_2\cdot v)_1h_1\rangle(h_2\cdot v)_0\\
+% &=\langle f\mid S^{-1}h_3(h_{23}v_1S^{-1}h_{21})h_1\rangle(h_{22}\cdot v_0)\\
+% &=\langle f\mid S^{-1}h_5h_4v_1S^{-1}h_2h_1\rangle h_3\cdot v_0\\
+% &=\langle f\mid v_1\rangle (h\cdot v_0)
+% \end{align*}
+% and the claim follows.
+% \end{proof}
+
+% \begin{theorem}
+% The categories $_H\mathcal{YD}^H$ and $_{\mathcal{D}(H)}\mathcal{M}$ are
+% equivalent.
+% \end{theorem}
+
+% \begin{proof}
+% It follows from Lemmas \ref{lem:DH_to_YD} and \ref{lem:YD_to_DH}.
+% \end{proof}
+
+
