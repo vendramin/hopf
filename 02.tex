@@ -158,6 +158,32 @@ Prove that the sum of comodules is a comodule.
     $M$ is a right $A^*$-comodule. 
 \end{exercise}
 
+
+\begin{definition}
+  \index{Comodule!homomorphism}
+  Let $C$ be a coalgebra and $N$ and $N_1$ be left $C$-comodules with
+  coactions $\delta$ and $\delta_1$, respectively. 
+  A linear map $f\colon N\to N_1$ is a comodule \emph{homomorphism}
+  if the diagram 
+  \[
+  \begin{tikzcd}
+	N & {C\otimes N} \\
+	N_1 & {C\otimes N_1}
+	\arrow["\delta", from=1-1, to=1-2]
+	\arrow["\delta_1"', from=2-1, to=2-2]
+	\arrow["\id\otimes f", from=1-2, to=2-2]
+	\arrow["f"', from=1-1, to=2-1]
+  \end{tikzcd}
+  \]
+  commutes, that is $(\id\otimes f)\delta=\delta_1 f$. 
+\end{definition}
+
+\begin{definition}
+  \index{Subcomodule}
+  Let $C$ be a coalgebra and $N$ be a left $C$-comodule. A subspace
+  $M$ of $N$ is a \emph{subcomodule} of $N$ if $\delta(M)\subseteq C\otimes M$. 
+\end{definition}
+
 % Let $m\in M$ and $\{m_1,\dots,m_k\}$ be a basis of $A\cdot m$. 
 % Thus $a\cdot m=\sum_{i=1}^kf_i(a)m_i$
 % then $\rho(m)=\sum_{i=1}^n m_i\otimes f_i$
@@ -332,7 +358,8 @@ is a bialgebra homomorphism that commutes with the antipode.
     Prove Theorem~\ref{thm:antipode}.
 \end{exercise}
 
-Theorem~\ref{thm:antipode} states that the antipode is both an anti-algebra and an anti-coalgebra homomorphism.
+Theorem~\ref{thm:antipode} states that the antipode is both an anti-algebra and
+an anti-coalgebra homomorphism.
 
 \begin{exercise}
     Let $H$ be a commutative or cocommutative Hopf algebra. 
@@ -382,12 +409,54 @@ Theorem~\ref{thm:antipode} states that the antipode is both an anti-algebra and 
     \end{align*}
 \end{example}
 
-\begin{example}[tensor algebra]
-\index{Tensor algebra}
-    Let $V$ be a vector space...
+\begin{example}
+\index{Tensor algebra} 
+Let $V$ be a $K$-vector space. Let $T^0(V)=K$ and
+\[
+  T^n(V)=V^{\otimes n}=V\otimes\cdots\otimes V\text{ ($n$-times) }
+\]
+for $n\geq1$. For $n,m\geq0$, 
+the isomorphisms \[
+  T^n(V)\otimes T^m(V)\simeq T^{n+m}(V)
+\]
+induce an associative product on $T(V)=\oplus_{n\geq0}T^n(V)$, namely
+\[
+  (x_1\otimes\cdots\otimes x_n)(x_{n+1}\otimes\cdots\otimes x_{n+m})
+  =x_1\otimes\cdots\otimes x_n\otimes x_{n+1}\otimes\cdots\otimes x_{n+m}
+\]
+for $x_1,\dots,x_n,x_{n+1},\dots,x_{n+m}\in V$. 
+
+Let $\iota\colon V\to T(V)$ be the canonical embedding. Since 
+$x_1\otimes\cdots\otimes x_n=\iota(x_1)\cdots\iota(x_n)$, we can identity 
+$x_1\otimes\cdots\otimes x_n$ with $x_1\cdots x_n$. 
+
+The vector space $T(V)$ with the product mentioned before is a 
+graded algebra. It is called the \emph{tensor algebra} of $V$. 
 \end{example}
 
-\begin{example}[universal enveloping algebra]
+\begin{exercise}
+  Let $V$ be a vector space, $A$ an algebra and 
+  $f\colon V\to A$ a linear map. Prove that there exists a unique
+  algebra homomorphism $T(V)\to A$ such that the diagram
+  \[\begin{tikzcd}
+    V & A \\
+    {T(V)}
+    \arrow["f", from=1-1, to=1-2]
+    \arrow["\iota"', from=1-1, to=2-1]
+    \arrow[dashed, from=2-1, to=1-2]
+  \end{tikzcd}
+\]
+  commutes. 
+\end{exercise}
+
+\begin{exercise}
+  Let $V$ be a vector space with basis $\{v_i:i\in I\}$. Prove that $T(V)$ is
+  isomorphic to the free algebra on $I$. 
+\end{exercise}
+
+% II.5.1, Kassel, page 34
+
+\begin{example}
 \index{Universal enveloping algebra}
     Let $\mathfrak{g}$ be a Lie algebra. The \emph{enveloping algebra} $H=\mathcal{U}(\mathfrak{g})$ is a Hopf algebra with
     \[
@@ -457,7 +526,7 @@ all $h\in H$ and $a,b\in A$.
 
 \begin{exercise}
 \label{xca:dualH_on_H}
-Let $H$ be a Hopf algebra.  Prove that $H^*$ is an left $H$-module-algebra
+Let $H$ be a Hopf algebra.  Prove that $H^*$ is a left $H$-module-algebra
 with  $\langle h\rightharpoonup f,x\rangle=\langle f,xh\rangle$ for all $f\in
 H^*$ and $h,x\in H$.  
 \end{exercise}
@@ -523,7 +592,7 @@ and unit $1\otimes1$.
 
 % \begin{exercise}
 % \index{smash product!right}
-% Let $H$ be a Hopf algebra and $(A,\leftarrow)$ be an right $H$-module-algebra.
+% Let $H$ be a Hopf algebra and $(A,\leftarrow)$ be a right $H$-module-algebra.
 % Prove that there exists an algebra structure on $H\otimes A$ given by 
 % \[
 % (h\otimes a)(g\otimes b)=hg_{1}\otimes(a\leftarrow g_{2})b

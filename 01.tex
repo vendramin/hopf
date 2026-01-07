@@ -244,7 +244,7 @@ In general, if $\Delta_1=\Delta$ and
 $\Delta_n=(\Delta\otimes\id^{\otimes(n-1)})\Delta_{n-1}\colon C\to C^{\otimes(n+1)}$ for $n\geq2$, 
 we write 
 \[
-\Delta_n(c)=\sum c_{1}\otimes\cdots\otimes c_{n}.
+\Delta_n(c)=\sum c_{1}\otimes\cdots\otimes c_{n+1}.
 \]
 
 Although the above notation may look unusual, it provides a very convenient way to write commutative diagrams. 
@@ -341,15 +341,14 @@ is written $G(C)$.
 \end{proposition}
 
 \begin{proof}
-    Let $C$ be a coalgebra such that $G(C)$ is linearly 
-    dependent. Let $\{c,c_1,\dots,c_n\}$ be a linearly dependent set of minimal size $n+1$. Without loss of generality, 
-    we may assume that 
-    $\{c_1,\dots,c_n\}$ is linearly independent and 
+    Let $C$ be a coalgebra such that $G(C)$ is linearly dependent. Let
+    $\{c,c_1,\dots,c_n\}$ be a linearly dependent set of minimal size $n+1$. Then 
+    $\{c_1,\dots,c_n\}$ is linearly independent and
     $c\in\operatorname{span}_K\{c_1,\dots,c_n\}$. Thus 
     \[
     c=\lambda_1c_1+\cdots+\lambda_nc_n
     \]
-    for $\lambda_1,\dots,\lambda_n\in K$, all differnt from
+    for $\lambda_1,\dots,\lambda_n\in K$, all different from
     zero. 
     Applying $\Delta$, 
     \[
@@ -385,9 +384,9 @@ the set of primitive elements of $C$.
 
 \begin{example}
     Let $\mathfrak{g}$ be a Lie algebra 
-    and $C=\mathcal{U}(\mathfrak{g})$. If $\operatorname{char}(K)=0$, then $P(C)=\mathfrak{g}$. Otherwise, if 
+    and $C=\mathcal{U}(\mathfrak{g})$. If $\operatorname{char}(K)=0$, then $\operatorname{Prim}(C)=\mathfrak{g}$. Otherwise, if 
     $\operatorname{char}(K)=p>0$, then 
-    $P(C)=\operatorname{span}_K\{x^{p^k}:k\geq0\}$.
+    $\operatorname{Prim}(C)=\operatorname{span}_K\{x^{p^k}:k\geq0\}$.
 \end{example}
 
 
