@@ -1,4 +1,4 @@
-\subsection{Modules}
+\section{Modules}
 
 We now give the usual definition of modules over
 algebras but using commutative diagrams.
@@ -42,7 +42,7 @@ The category of left $A$-modules is denoted $\lmod{A}$.
 Right modules and right module homomorphisms are defined similarly. We leave it to the reader to write the definitions explicitly. The category of right $A$-modules is denoted $\rmod{A}$. 
 
 
-\subsection{Comodules}
+\section{Comodules}
 
 A comodule over a coalgebra is the dual 
 concept of a module over an algebra. Instead of an algebra acting on a vector space, a coalgebra coacts on it. 
@@ -187,7 +187,7 @@ Prove that the sum of comodules is a comodule.
 % Let $m\in M$ and $\{m_1,\dots,m_k\}$ be a basis of $A\cdot m$. 
 % Thus $a\cdot m=\sum_{i=1}^kf_i(a)m_i$
 % then $\rho(m)=\sum_{i=1}^n m_i\otimes f_i$
-\subsection{The fundamental theorem of coalgebras}
+\section{The fundamental theorem of coalgebras}
 
 \begin{definition}
     \index{Subcoalgebra}
@@ -217,7 +217,7 @@ The reader should verify that a subcoalgebra is indeed a coalgebra with the appr
             \item Let $\{c_i:i\in I\}$ be a basis of $C$. Let $\rho\colon M\to M\otimes C$, $m\mapsto\sum w_i\otimes c_i$, where all but finitely many $w_i$ are
             zero. For each $i$, write 
             \[
-            \Delta(c_i)=\sum\alpha_{ijk}c_j\otimes c_j
+            \Delta(c_i)=\sum\alpha_{ijk}c_j\otimes c_k
             \]
             where $\lambda_{ijk}\in K$. Then
             \begin{align*}
@@ -341,6 +341,14 @@ A routine argument shows the uniqueness of the antipode, when it exists.
 A Hopf algebra \emph{homomorphism} 
 is a bialgebra homomorphism that commutes with the antipode. 
 \end{definition}
+
+\begin{exercise}
+  Prove that the set of group-like elements of a Hopf algebra is a group with
+  the operation inherited from the algebra structure. 
+\end{exercise}
+
+% exercise 
+% bialgebra homomorphism => Hopf algebra homomorphism
 % Sweedler 4.0.1
 
 \begin{theorem}
@@ -489,11 +497,11 @@ g^2=1,\quad x^2=0,\quad xg=-gx.
 Then $H_4$ is a Hopf algebra with
 \begin{align*}
 &\Delta(g)=g\otimes g,
-&&\Delta(x)=x\otimes 1+1\otimes x,
+&&\Delta(x)=x\otimes g+1\otimes x,
 &&\epsilon(g)=1,
 &&\epsilon(x)=0,
 &&S(g)=g^{-1},
-&&S(x)=-gx.    
+&&S(x)=-xg.    
 \end{align*}
 Note that $H_4$ is non-commutative and non-cocommutative. Moreover, 
 $S$ has order four. 
@@ -532,7 +540,7 @@ H^*$ and $h,x\in H$.
 \end{exercise}
 
 Similarly, $H^*$ is a right $H$-module-algebra
-with $\langle f\leftharpoonup h,x\rangle=\langle f,xh\rangle$.
+with $\langle f\leftharpoonup h,x\rangle=\langle f,hx\rangle$.
 
 \begin{exercise}
 \label{xca:adjoint}
@@ -609,7 +617,7 @@ and unit $1\otimes1$.
 Let $H$ be a Hopf algebra. A left \emph{$H$-module-coalgebra}
 is a coalgebra $C$ with a left $H$-module structure such that 
 \[
-\sum (h\rightarrow c)_{1}\otimes(h\rightarrow c)_{2} =\sum (h_{1}\rightarrow c_{1})(h_{2}\rightarrow c_{2})
+\sum (h\rightarrow c)_{1}\otimes(h\rightarrow c)_{2} =\sum (h_{1}\rightarrow c_{1})\otimes (h_{2}\rightarrow c_{2})
 \quad\text{and}\quad 
 \epsilon(h\rightarrow c)  =\epsilon(h)\epsilon(c)
 \]
@@ -620,7 +628,7 @@ Similarly, a right $H$-module-coalgebra
 is a coalgebra $C$ with a right
 $H$-module structure such that 
 \[
-\sum (c\leftarrow h)_{1}\otimes(c\leftarrow h)_{2} =\sum (c_{1}\leftarrow h_{1})(c_{2}\leftarrow h_{2})
+\sum (c\leftarrow h)_{1}\otimes(c\leftarrow h)_{2} =\sum (c_{1}\leftarrow h_{1})\otimes (c_{2}\leftarrow h_{2})
 \quad\text{and}\quad 
 \epsilon(c\leftarrow h)  =\epsilon(h)\epsilon(c)
 \]
@@ -661,7 +669,7 @@ y\triangleright e_{x}=y\rightharpoonup e_{x}\leftharpoonup y^{-1}=e_{xyx^{-1}}.
 
 \begin{exercise}
 \index{Regular action}
-Let $H$ be a Hopf algebra. Prove that 
+Let $H$ be a Hopf algebra. 
 Prove that $H$ is a left $H$-module-coalgebra with 
 the left \emph{regular action} of $H$ on itself:
 $h\rightarrow g=gh$ for all

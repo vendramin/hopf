@@ -354,7 +354,7 @@ diagram
 \end{tikzcd}
 \]
 obtained from the naturality of the braiding with
-$f=c_{U,V}\otimes\id_W$ and $g=\id_W$.
+$f=c_{U,V}$ and $g=\id_W$.
 \end{proof}
 
 %\begin{example}
@@ -395,7 +395,7 @@ Let $H$ be a Hopf algebra. Prove that
     and $\tau(R)=R^{-1}$. 
 \end{exercise}
 
-\subsection{Algebras in categories}
+\section{Algebras in categories}
 Now there is a natural way of defining an algebra in a monoidal category. 
 
 \begin{definition}
@@ -447,7 +447,7 @@ m_{A\otimes B}=(m_A\otimes m_B)(\id_A\otimes c_{B,A}\otimes \id_B).
 \]
 \end{example}
 
-\subsection{Coalgebras in categories}
+\section{Coalgebras in categories}
 Similarly one defines coalgebras in categories.
 
 \begin{definition}
@@ -536,7 +536,7 @@ for all $h,h'\in H$.
 
 \begin{definition}
 \index{Yetter--Drinfeld module}
-Let $H$ be a Hopf algebra. A \emph{Yetter--Drifeld module} over $H$ is a
+Let $H$ be a Hopf algebra. A \emph{Yetter--Drinfeld module} over $H$ is a
 triple $(V,\rightarrow,\delta)$, where $(V,\rightarrow)$ is a left $H$-module,
 $(V,\delta)$ is a left $H$-comodule, and such that 
 \begin{equation}
@@ -590,7 +590,7 @@ $g,h\in H$.
 
 \begin{exercise}\label{xca:YD_tensor}
 Let $V$ and $W$ be two Yetter--Drinfeld modules over $H$. Then $V\otimes W$ is a
-Yetter--Drinfeld over $H$, where 
+Yetter--Drinfeld module over $H$, where 
 \begin{align*}
 h\rightarrow(v\otimes w) & =\sum (h_{1}\rightarrow v)\otimes(h_{2}\rightarrow w),\\
 \delta(v\otimes w) & =\sum v_{-1}w_{-1}\otimes(v_{0}\otimes w_{0})
