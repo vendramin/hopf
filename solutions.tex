@@ -1,0 +1,26 @@
+\section*{Solutions}
+
+\begin{sol}{xca:coalgebra}
+  For the coassociativity, 
+  \begin{align*}
+    \sum x_{1,1}\otimes x_{1,2}\otimes x_2 &= 
+    (\Delta\otimes\id)\Delta(x)
+    =(\id\otimes\Delta)\Delta(x)
+    =\sum x_1\otimes x_{2,1}\otimes x_{2,2}.
+  \end{align*}
+  For the counit, 
+  \[
+    \sum\epsilon(x_1)x_2=(\epsilon\otimes\id)\Delta(x)
+    =x=(\id\otimes\epsilon)\Delta(x)=\sum x_1\epsilon(x_2).
+  \]
+\end{sol}
+
+\begin{sol}{xca:primitive}
+  Let $x\in C$. Applying $\epsilon\otimes\id$ 
+  to $\Delta(x)=x\otimes1+1\otimes x$, we get
+  \begin{align*} 
+    x=(\epsilon\otimes\id)\Delta(x)=\epsilon(x)1+\epsilon(1)x
+    =\epsilon(x)+x.
+  \end{align*}
+  Thus $\epsilon(x)=0$. 
+\end{sol}
