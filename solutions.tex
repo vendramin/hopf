@@ -24,3 +24,22 @@
   \end{align*}
   Thus $\epsilon(x)=0$. 
 \end{sol}
+
+\begin{sol}{xca:1.6.4a}
+  Let $m\in M$. Then 
+  \[
+    \epsilon\cdot m=\sum\epsilon(m_1)m_0=m.
+  \]
+  Now let $f,g\in C^*$.  Since 
+  \begin{align*}
+    g\cdot (f\cdot m) &= g\cdot\left( \sum f(m_1)m_0 \right)\\
+                      &= \sum g( (f(m_1)m_0)_1 )(f(m_1)m_0)_0\\
+                      &= \sum f(m_1)g(m_{0,1})m_{0,0}\\
+                      &= \sum f(m_1)g(m_0)m_{-1}.
+  \shortintertext{and}
+   (gf)\cdot m &= \sum (gf)(m_1)m_0\\
+               &= \sum g(m_{1,1})f(m_{1,2})m_0\\
+               &= \sum g(m_0)f(m_1)m_{-1},
+  \end{align*}
+  the claim follows. 
+\end{sol}
