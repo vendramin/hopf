@@ -1,3 +1,114 @@
+\section{Hopf modules}
+
+\begin{definition}
+  \index{Hopf module}
+  Let $H$ be a Hopf algebra. A \emph{Hopf module}
+  is a right $H$-module and a right $H$-comodule $M$
+  such that 
+  \begin{equation}
+    \label{eq:HopfModule}
+    \delta(m\leftarrow h)=\sum (m_0\leftarrow h_1)\otimes m_1h_2
+  \end{equation}
+  for all $m\in M$ and $h\in H$. 
+\end{definition}
+
+If $M$ is a right $H$-module, then $M\otimes H$ is a right $H$-module with
+\[
+  (m\otimes x)\leftarrow h=m\leftarrow h_1\otimes xh_2,\quad 
+  m\in M,x,h\in H.
+\]
+The compatibility
+condition~\eqref{eq:HopfModule} means that the coaction $\delta\colon M\to
+M\otimes H$ is an $H$-module homomorphism. 
+
+\begin{example}
+  Let $M=H$, $m\leftarrow h=mh$ and $\delta(m)=\Delta(m)$. 
+  Then $M$ is an $H$-Hopf module. 
+\end{example}
+
+\begin{example}[trivial Hopf modules]
+  \index{Hopf module!trivial}
+  Let $V$ be a vector space and $M=V\otimes H$. Then $M$ 
+  is an $H$-Hopf module with 
+  \[
+    (v\otimes h)\leftarrow h'=v\otimes hh',\quad 
+    \delta(v\otimes h)=(v\otimes h_1)\otimes h_2
+  \] 
+  for $v\in V$ and $h,h'\in H$. 
+\end{example}
+
+The following example is important:
+
+\begin{lemma}[Larson--Sweedler]
+  Let $H$ be a finite dimensional Hopf algebra with basis $h_1,\dots,h_n$.
+  Let $f_1,\dots,f_n$ be its dual basis. 
+  Then $H^*$ is a Hopf
+  module with 
+  \[
+    f\leftarrow h=f_2(S(h))f_1,\quad 
+    \delta(f)=\sum_{i=1}^nf(h_i,2)f_i\otimes h_i,1
+  \]
+  for $f\in H^*$ and $h\in H$. 
+\end{lemma}
+
+\begin{proof}
+\end{proof}
+
+\section{The fundamental theorem of Hopf modules}
+
+The fundamental theorem states that every 
+Hopf module of a finite-dimensional Hopf algebra 
+is trivial.
+
+\begin{theorem}[Larson-Sweedler]
+  \label{thm:HopfModules}
+  Let $H$ be a finite-dimensional Hopf algebra, 
+  $M$ a Hopf module over $H$, and 
+  \[
+    V=M^{\operatorname{co}H}=\{m\in M:\delta(m)=m\otimes 1\}
+  \]
+  be the space of coinvariants of $M$. 
+  Then $V\otimes H\to M$, $v\otimes h\mapsto (v\leftarrow h)$, is an
+  isomorphism of $H$-Hopf modules. 
+\end{theorem}
+
+\begin{proof}
+\end{proof}
+
+Let us see some easy applications:
+
+\begin{corollary}
+  Let $H$ be a finite-dimensional Hopf algebra. If $I$ is a right ideal and a
+  right coideal of $H$, then either $I=H$ or $I=\{0\}$. 
+\end{corollary}
+
+\begin{proof}
+  Note that $I$ is a right $H$-module with
+  right multiplication, that is $h\leftarrow h'=hh'$ for $h,h'\in H$. 
+  Moreover, 
+  $I$ is a right $H$-comodule with $\delta(h)=\Delta(h)$ for all $h\in H$. By Theorem~\ref{thm:HopfModules}, 
+  \[
+  I\simeq I^{\operatorname{co}H}\otimes H
+  \]
+  as $H$-Hopf modules. In particular, 
+  \begin{equation}
+    \label{eq:dim}
+    \dim I=(\dim I^{\operatorname{co}H})(\dim H)\leq (\dim I)(\dim H).
+  \end{equation}
+  Thus $\dim I^{\operatorname{co}H}\in\{0,1\}$. If $\dim I^{\operatorname{co}H}=0$, 
+  then~\eqref{eq:dim} implies that $\dim I=0$. Hence $I=\{0\}$. If 
+  $\dim I^{\operatorname{co}H}=1$, let $0\ne x\in I^{\operatorname{co}H}$. 
+  Then 
+  \[
+    x=(\epsilon\otimes\id)\Delta(x)=(\epsilon\otimes\id)(x\otimes 1)=\epsilon(x)1.
+  \]
+  In particular, $\epsilon(x)\ne 0$. Hence $1\in I$ and threfore $I=H$. 
+\end{proof}
+
+\section{Integrals}
+
+\section{Frobenius algebras}
+
 \section{Pointed Hopf algebras}
 
 \begin{definition}
