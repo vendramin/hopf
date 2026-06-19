@@ -14,9 +14,9 @@
 
 If $M$ is a right $H$-module, then $M\otimes H$ is a right $H$-module with
 \[
-  (m\otimes x)\leftarrow h=m\leftarrow h_1\otimes xh_2,\quad 
-  m\in M,x,h\in H.
+  (m\otimes x)\leftarrow h=\sum (m\leftarrow h_1)\otimes xh_2
 \]
+for all $m\in M$ and $x,h\in H$. 
 The compatibility
 condition~\eqref{eq:HopfModule} means that the coaction $\delta\colon M\to
 M\otimes H$ is an $H$-module homomorphism. 
@@ -46,7 +46,7 @@ The following example is important:
   Then $H^*$ is a Hopf
   module with 
   \[
-    f\leftarrow h=f_2(S(h))f_1,\quad 
+    f\leftarrow h=\sum f_2(S(h))f_1,\quad 
   \delta(f)=\sum_{i=1}^n\sum f(h_{i,2})f_i\otimes h_{i,1}
   \]
   for $f\in H^*$ and $h\in H$. 
@@ -61,7 +61,7 @@ The \emph{fundamental theorem of Hopf modules} states that every
 Hopf module of a finite-dimensional Hopf algebra 
 is trivial.
 
-\begin{theorem}[Larson-Sweedler]
+\begin{theorem}[Larson--Sweedler]
   \label{thm:HopfModules}
   Let $H$ be a finite-dimensional Hopf algebra, 
   $M$ a Hopf module over $H$, and 
@@ -88,9 +88,7 @@ Let us see an easy application:
   right multiplication, that is $h\leftarrow h'=hh'$ for $h,h'\in H$. 
   Moreover, 
   $I$ is a right $H$-comodule with $\delta(h)=\Delta(h)$ for all $h\in H$. By Theorem~\ref{thm:HopfModules}, 
-  \[
-  I\simeq I^{\operatorname{co}H}\otimes H
-  \]
+  $I\simeq I^{\operatorname{co}H}\otimes H$ 
   as $H$-Hopf modules. In particular, 
   \begin{equation}
     \label{eq:dim}
@@ -109,8 +107,40 @@ Let us see an easy application:
 
 \section{Integrals}
 
+\begin{definition}
+  \index{Left integral}
+  Let $H$ be a Hopf algebra. 
+  An element $t$ is called a \emph{left integral} if 
+  $ht=\epsilon(h)t$ for all $h\in H$. 
+\end{definition}
+
+The set $\int_H^l$ 
+%\[
+%  \int_H^l=\{t\in H:ht=\epsilon(h)t\text{ for all $h\in H$}\}
+%\]
+of left integrals of $H$ 
+is a subspace of $H$. 
+
+Similarly, one defines a \emph{right integral}: it is
+an element $t\in H$ such that 
+$th=\epsilon(h)t$ for all $h\in H$. 
+The set $\int_H^r$ of right integrals of $H$ is a subspace of $H$.  
+
+\begin{example}
+  Let $G$ be a finite group and 
+  $H=KG$. Then $t=\sum_{g\in G}g\in\int_H^l\cap\int_H^r$. 
+\end{example}
+
 \begin{theorem}
+  Let $H$ be a finite-dimensional Hopf algebra. 
+  \begin{enumerate}
+    \item Both $\int_H^l$ and $\int_H^r$ are one-dimensional. 
+    \item $S(\int_H^l)\subseteq\int_H^r$. 
+  \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+\end{proof}
 
 \begin{example}
 \end{example}
@@ -133,7 +163,7 @@ Let us see an easy application:
   $H^*$ is a Hopf $H$-module (see Lemma~\ref{lem:LarsonSweedler}), 
   $S(x)=0$ implies that
   \[
-    f\leftarrow x=f_2S(x)f_1=0. 
+    f\leftarrow x=\sum f_2(S(x))f_1=0. 
   \]
   By Theorem~\ref{thm:HopfModules}, $H\simeq...$. 
   By Lemma... $(H^*)^{\operatorname{co}H}=\int_{H}^l$. 
