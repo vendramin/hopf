@@ -32,7 +32,7 @@ M\otimes H$ is an $H$-module homomorphism.
   is an $H$-Hopf module with 
   \[
     (v\otimes h)\leftarrow h'=v\otimes hh',\quad 
-    \delta(v\otimes h)=(v\otimes h_1)\otimes h_2
+    \delta(v\otimes h)=\sum (v\otimes h_1)\otimes h_2
   \] 
   for $v\in V$ and $h,h'\in H$. 
 \end{example}
@@ -40,13 +40,14 @@ M\otimes H$ is an $H$-module homomorphism.
 The following example is important:
 
 \begin{lemma}[Larson--Sweedler]
+  \label{lem:LarsonSweedler}
   Let $H$ be a finite dimensional Hopf algebra with basis $h_1,\dots,h_n$.
   Let $f_1,\dots,f_n$ be its dual basis. 
   Then $H^*$ is a Hopf
   module with 
   \[
     f\leftarrow h=f_2(S(h))f_1,\quad 
-    \delta(f)=\sum_{i=1}^nf(h_i,2)f_i\otimes h_i,1
+  \delta(f)=\sum_{i=1}^n\sum f(h_{i,2})f_i\otimes h_{i,1}
   \]
   for $f\in H^*$ and $h\in H$. 
 \end{lemma}
@@ -56,7 +57,7 @@ The following example is important:
 
 \section{The fundamental theorem of Hopf modules}
 
-The fundamental theorem states that every 
+The \emph{fundamental theorem of Hopf modules} states that every 
 Hopf module of a finite-dimensional Hopf algebra 
 is trivial.
 
@@ -75,7 +76,7 @@ is trivial.
 \begin{proof}
 \end{proof}
 
-Let us see some easy applications:
+Let us see an easy application:
 
 \begin{corollary}
   Let $H$ be a finite-dimensional Hopf algebra. If $I$ is a right ideal and a
@@ -97,7 +98,8 @@ Let us see some easy applications:
   \end{equation}
   Thus $\dim I^{\operatorname{co}H}\in\{0,1\}$. If $\dim I^{\operatorname{co}H}=0$, 
   then~\eqref{eq:dim} implies that $\dim I=0$. Hence $I=\{0\}$. If 
-  $\dim I^{\operatorname{co}H}=1$, let $0\ne x\in I^{\operatorname{co}H}$. 
+  $\dim I^{\operatorname{co}H}=1$, then $I=H$. Indeed, 
+  let $0\ne x\in I^{\operatorname{co}H}$. 
   Then 
   \[
     x=(\epsilon\otimes\id)\Delta(x)=(\epsilon\otimes\id)(x\otimes 1)=\epsilon(x)1.
@@ -107,7 +109,49 @@ Let us see some easy applications:
 
 \section{Integrals}
 
+\begin{theorem}
+\end{theorem}
+
+\begin{example}
+\end{example}
+
+\begin{example}
+\end{example}
+
+\begin{example}
+\end{example}
+
+
+% for this I need integrals
+
+\begin{corollary}
+  Let $H$ be a finite-dimensional Hopf algebra. Then $S$ is bijective. 
+\end{corollary}
+
+\begin{proof}
+  Recall that $S\colon H\to H$ is a linear map. Let $x\in\ker S$. Since 
+  $H^*$ is a Hopf $H$-module (see Lemma~\ref{lem:LarsonSweedler}), 
+  $S(x)=0$ implies that
+  \[
+    f\leftarrow x=f_2S(x)f_1=0. 
+  \]
+  By Theorem~\ref{thm:HopfModules}, $H\simeq...$. 
+  By Lemma... $(H^*)^{\operatorname{co}H}=\int_{H}^l$. 
+\end{proof}
+
 \section{Frobenius algebras}
+
+\section{Maschke's theorem}
+
+\begin{theorem}
+  \label{thm:Maschke}
+\end{theorem}
+
+\begin{proof}
+\end{proof}
+
+Theorem~\ref{thm:Maschke} was in fact proved by... Why is then called
+Maschke's theorem? 
 
 \section{Pointed Hopf algebras}
 
