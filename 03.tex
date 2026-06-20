@@ -53,6 +53,23 @@ The following example is important:
 \end{lemma}
 
 \begin{proof}
+  By Exercises...\framebox{?}, $H^*$ is a right $H$-module
+  and $H$-comodule. Let us prove the compatibility condition. On the one 
+  hand, 
+  \[
+  \delta(\varphi\leftarrow h) = \sum f_2(S(h))f_1 = 
+  \sum_{i=1}^n\sum\varphi_2(S(h))f_i\otimes h_{i,1}\varphi_1(h_{i,2}).
+  \]
+  On the other hand, 
+  \begin{align*}
+    \sum (\varphi_0\leftarrow h_1)\otimes \varphi_1h_2 
+    &=\sum_{i=1}^n\sum\varphi(h_{i,2})(f_i\leftarrow h_1)\otimes h_{i,1}h_2\\
+    &=\sum_{i=1}^n\sum\varphi(h_{i,2})(f_{i,2}(S(h_1))f_{i,1}\otimes h_{i,1}h_2.
+  \end{align*}
+  Evaluating the left tensor on $x\in H$, 
+  \begin{align*}
+    \sum
+  \end{align*}
 \end{proof}
 
 \section{The fundamental theorem of Hopf modules}
@@ -114,12 +131,7 @@ Let us see an easy application:
   $ht=\epsilon(h)t$ for all $h\in H$. 
 \end{definition}
 
-The set $\int_H^l$ 
-%\[
-%  \int_H^l=\{t\in H:ht=\epsilon(h)t\text{ for all $h\in H$}\}
-%\]
-of left integrals of $H$ 
-is a subspace of $H$. 
+The set $\int_H^l$ of left integrals of $H$ is a subspace of $H$. 
 
 Similarly, one defines a \emph{right integral}: it is
 an element $t\in H$ such that 
@@ -131,6 +143,26 @@ The set $\int_H^r$ of right integrals of $H$ is a subspace of $H$.
   $H=KG$. Then $t=\sum_{g\in G}g\in\int_H^l\cap\int_H^r$. 
 \end{example}
 
+\begin{proposition}
+  \label{pro:dual_op}
+  Let $H$ be a finite-dimensional Hopf algebra. 
+  If $H^*$ is an $H$-Hopf module with the structure of..., 
+  then $\int_{H^*}^l = (H^*)^{\operatorname{op}H}$. 
+\end{proposition}
+
+\begin{proof}
+  Let $h_1,\dots,h_n$ be a basis of $H$ and $f_1,\dots,f_n$ be its
+  dual basis. 
+  An element $\varphi\in H^*$ is a left integral of $H^*$ 
+  if and only if $\varphi(h_2)h_1=\varphi(h)1_H$ for all $h\in H$. Since 
+  \[
+  \varphi(h_2)h_1=\varphi(h)1_H\Longleftrightarrow 
+  \sum_{i=1}^n\varphi(h_{i,2})f_i\otimes h_{i,1}=\varphi\otimes 1_H
+  \Longleftrightarrow \delta(\varphi)=\varphi\otimes 1_H, 
+  \]
+  the claim follows. 
+\end{proof}
+
 \begin{theorem}
   Let $H$ be a finite-dimensional Hopf algebra. 
   \begin{enumerate}
@@ -140,6 +172,15 @@ The set $\int_H^r$ of right integrals of $H$ is a subspace of $H$.
 \end{theorem}
 
 \begin{proof}
+  Let us prove the first claim. By Theorem~\ref{thm:HopfModules}, 
+  $H^*\simeq (H^*)^{\operatorname{op}H}\otimes H$ as Hopf modules. Then 
+  \[
+    \dim H=\dim H^*=(\dim (H^*)^{\operatorname{op}H})(\dim H).
+  \]
+  and hence $\dim (H^*)^{\operatorname{op}H}=1$. Now 
+  the claim follows from Proposition~\ref{pro:dual_op}. 
+
+  Now we prove the second claim...
 \end{proof}
 
 \begin{example}
