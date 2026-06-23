@@ -7,14 +7,14 @@
   such that 
   \begin{equation}
     \label{eq:HopfModule}
-    \delta(m\leftarrow h)=\sum (m_0\leftarrow h_1)\otimes m_1h_2
+    \delta(m\leftarrow h)=(m_0\leftarrow h_1)\otimes m_1h_2
   \end{equation}
   for all $m\in M$ and $h\in H$. 
 \end{definition}
 
 If $M$ is a right $H$-module, then $M\otimes H$ is a right $H$-module with
 \[
-  (m\otimes x)\leftarrow h=\sum (m\leftarrow h_1)\otimes xh_2
+  (m\otimes x)\leftarrow h=(m\leftarrow h_1)\otimes xh_2
 \]
 for all $m\in M$ and $x,h\in H$. 
 The compatibility
@@ -32,7 +32,7 @@ M\otimes H$ is an $H$-module homomorphism.
   is an $H$-Hopf module with 
   \[
     (v\otimes h)\leftarrow h'=v\otimes hh',\quad 
-    \delta(v\otimes h)=\sum (v\otimes h_1)\otimes h_2
+    \delta(v\otimes h)=(v\otimes h_1)\otimes h_2
   \] 
   for $v\in V$ and $h,h'\in H$. 
 \end{example}
@@ -46,8 +46,8 @@ The following example is important:
   Then $H^*$ is a Hopf
   module with 
   \[
-    f\leftarrow h=\sum f_2(S(h))f_1,\quad 
-  \delta(f)=\sum_{i=1}^n\sum f(h_{i,2})f_i\otimes h_{i,1}
+    f\leftarrow h=f_2(S(h))f_1,\quad 
+  \delta(f)=\sum_{i=1}^n f(h_{i,2})f_i\otimes h_{i,1}
   \]
   for $f\in H^*$ and $h\in H$. 
 \end{lemma}
@@ -57,14 +57,14 @@ The following example is important:
   and $H$-comodule. Let us prove the compatibility condition. On the one 
   hand, 
   \[
-  \delta(\varphi\leftarrow h) = \sum f_2(S(h))f_1 = 
-  \sum_{i=1}^n\sum\varphi_2(S(h))f_i\otimes h_{i,1}\varphi_1(h_{i,2}).
+  \delta(\varphi\leftarrow h) = f_2(S(h))f_1 = 
+  \sum_{i=1}^n\varphi_2(S(h))f_i\otimes h_{i,1}\varphi_1(h_{i,2}).
   \]
   On the other hand, 
   \begin{align*}
-    \sum (\varphi_0\leftarrow h_1)\otimes \varphi_1h_2 
-    &=\sum_{i=1}^n\sum\varphi(h_{i,2})(f_i\leftarrow h_1)\otimes h_{i,1}h_2\\
-    &=\sum_{i=1}^n\sum\varphi(h_{i,2})(f_{i,2}(S(h_1))f_{i,1}\otimes h_{i,1}h_2.
+    (\varphi_0\leftarrow h_1)\otimes \varphi_1h_2 
+    &=\sum_{i=1}^n\varphi(h_{i,2})(f_i\leftarrow h_1)\otimes h_{i,1}h_2\\
+    &=\sum_{i=1}^n\varphi(h_{i,2})(f_{i,2}(S(h_1))f_{i,1}\otimes h_{i,1}h_2.
   \end{align*}
   Evaluating the left tensor on $x\in H$, 
   \begin{align*}
@@ -94,7 +94,12 @@ is trivial.
   We claim that $f\colon V\otimes H\to M$, $v\otimes h\mapsto (v\leftarrow h)$,
   is an isomorphism of Hopf modules. 
 
-  First we prove that $f$ is $H$-linear. 
+  First we prove that $f$ is $H$-linear:
+  \begin{align*}
+    &f(v\otimes h\leftarrow h') = f(v\otimes hh')=v\leftarrow (hh')
+    =(v\leftarrow h)\leftarrow h'=f(v\otimes h)\leftarrow h
+  \end{align*}
+  for all $v\in V$ and $h,h'\in H$. 
 
   Now we prove that $f$ is $H$-colinear. 
 
@@ -167,7 +172,7 @@ The set $\int_H^r$ of right integrals of $H$ is a subspace of $H$.
   \label{pro:dual_op}
   Let $H$ be a finite-dimensional Hopf algebra. 
   If $H^*$ is an $H$-Hopf module with the structure of..., 
-  then $\int_{H^*}^l = (H^*)^{\operatorname{op}H}$. 
+  then $\int_{H^*}^l = (H^*)^{\operatorname{co}H}$. 
 \end{proposition}
 
 \begin{proof}
@@ -193,11 +198,11 @@ The set $\int_H^r$ of right integrals of $H$ is a subspace of $H$.
 
 \begin{proof}
   Let us prove the first claim. By Theorem~\ref{thm:HopfModules}, 
-  $H^*\simeq (H^*)^{\operatorname{op}H}\otimes H$ as Hopf modules. Then 
+  $H^*\simeq (H^*)^{\operatorname{co}H}\otimes H$ as Hopf modules. Then 
   \[
-    \dim H=\dim H^*=(\dim (H^*)^{\operatorname{op}H})(\dim H).
+    \dim H=\dim H^*=(\dim (H^*)^{\operatorname{co}H})(\dim H).
   \]
-  and hence $\dim (H^*)^{\operatorname{op}H}=1$. Now 
+  and hence $\dim (H^*)^{\operatorname{co}H}=1$. Now 
   the claim follows from Proposition~\ref{pro:dual_op}. 
 
   Now we prove the second claim...
@@ -224,13 +229,31 @@ The set $\int_H^r$ of right integrals of $H$ is a subspace of $H$.
   $H^*$ is a Hopf $H$-module (see Lemma~\ref{lem:LarsonSweedler}), 
   $S(x)=0$ implies that
   \[
-    f\leftarrow x=\sum f_2(S(x))f_1=0. 
+    f\leftarrow x=f_2(S(x))f_1=0. 
   \]
   By Theorem~\ref{thm:HopfModules}, $H\simeq...$. 
   By Lemma... $(H^*)^{\operatorname{co}H}=\int_{H}^l$. 
 \end{proof}
 
 \section{Frobenius algebras}
+
+\begin{definition}
+  Let $A$ be a $K$-algebra. We say that $A$ is \emph{Frobenius} if there exists
+  a non-degenerate bilinear form $\kappa\colon A\times A\to K$ such that
+  $\kappa(ab,c)=\kappa(a,bc)$ for all $a,b,c\in A$. 
+\end{definition}
+
+\begin{proposition}
+\end{proposition}
+
+\begin{theorem}
+  Let $H$ be a finite-dimensional Hopf algebra. Then $H$ is
+  a Frobenius algebra. 
+\end{theorem}
+
+\begin{proof}
+  
+\end{proof} 
 
 \section{Maschke's theorem}
 
@@ -263,7 +286,7 @@ Maschke's theorem?
     Let $C$ be a coalgebra. Prove that 
     $C^*$ acts on $C$ by
     \[
-    f\rightharpoonup c=\sum f(c_2)c_1.
+    f\rightharpoonup c=f(c_2)c_1.
     \]
     Moreover, $g(f\rightharpoonup c)=(gf)(c)$ for 
     all $f,g\in C^*$ and $c\in C$. 
@@ -517,7 +540,7 @@ Let $H$ be a Hopf algebra. Then $\lmod{H}$ is a monoidal
 category.  Recall that if $V$ and $W$ are two left $H$-modules, the tensor
 product of $V$ and $W$ is defined by 
 \[
-h\rightarrow(v\otimes w)=\sum (h_{1}\rightarrow v)\otimes(h_{2}\rightarrow w)
+h\rightarrow(v\otimes w)=(h_{1}\rightarrow v)\otimes(h_{2}\rightarrow w)
 \]
 for all $h\in H$, $v\in V$, $w\in W$. 
 \end{example}
@@ -536,7 +559,7 @@ Let $H$ be a Hopf algebra. Then $\lcomod{H}$ is a monoidal
 category.  Recall that if $V$ and $W$ are two left $H$-comodules, the tensor
 product of $V$ and $W$ is defined defined by 
 \[
-\delta(v\otimes w)=\sum v_{-1}w_{-1}\otimes(v_0\otimes w_0)
+\delta(v\otimes w)=v_{-1}w_{-1}\otimes(v_0\otimes w_0)
 \]
 for all $v\in V$, $w\in W$.
 \end{example}
@@ -621,9 +644,9 @@ $f=c_{U,V}$ and $g=\id_W$.
     monoidal category if and only if $H$ is \emph{quasitriangular}, that is, there exists an invertible element
     $R=\sum_{i}a_{i}\otimes b_{i}\in H\otimes H$ such that 
 \begin{align*}
-\sum h_{2}a_{i}\otimes h_{1}b_{i} & =\sum a_{i}h_{1}\otimes b_{i}h_{2},\\
-\sum a_{i,1}\otimes a_{i,2}\otimes b_{i} & =\sum a_{i}\otimes a_{j}\otimes b_{i}b_{j},\\
-\sum a_{i}\otimes b_{i,1}\otimes b_{i,2} & =\sum a_{i}a_{j}\otimes b_{j}\otimes b_{i}.
+h_{2}a_{i}\otimes h_{1}b_{i} & =a_{i}h_{1}\otimes b_{i}h_{2},\\
+a_{i,1}\otimes a_{i,2}\otimes b_{i} & =a_{i}\otimes a_{j}\otimes b_{i}b_{j},\\
+a_{i}\otimes b_{i,1}\otimes b_{i,2} & =a_{i}a_{j}\otimes b_{j}\otimes b_{i}.
 \end{align*}
 for all $h\in H$. 
 \end{exercise} 
@@ -762,7 +785,7 @@ and $\epsilon\in\Hom(B,\mathbb{I})$ are morphism of algebras.
 % \]
 
 \begin{exercise}
-Let $H$ be a quasitriangular Hopf algebra with $R=\sum a_{i}\otimes b_{i}$.
+Let $H$ be a quasitriangular Hopf algebra with $R=a_{i}\otimes b_{i}$.
 Then $\lmod{H}$ is braided with braiding
 \[
 c_{V,W}(v\otimes w)=\sum_{i}b_{i}\cdot w\otimes a_{i}\cdot v.
@@ -773,7 +796,7 @@ c_{V,W}(v\otimes w)=\sum_{i}b_{i}\cdot w\otimes a_{i}\cdot v.
     Prove that $H$ is a bialgebra in $\lmod{H}$ if $H$ is an algebra
 and a coalgebra in $\lmod{H}$ and 
 \[
-\sum (hh')_{1}\otimes(hh')_{2}=\sum_{i}\sum h_{1}(b_{i}\cdot h'_{1})\otimes(a_{i}\cdot h_{2})h'_{2}
+(hh')_{1}\otimes(hh')_{2}=\sum_{i} h_{1}(b_{i}\cdot h'_{1})\otimes(a_{i}\cdot h_{2})h'_{2}
 \]
 for all $h,h'\in H$.
 \end{exercise}
@@ -786,7 +809,7 @@ Let $H$ be a Hopf algebra. A \emph{Yetter--Drinfeld module} over $H$ is a
 triple $(V,\rightarrow,\delta)$, where $(V,\rightarrow)$ is a left $H$-module,
 $(V,\delta)$ is a left $H$-comodule, and such that 
 \begin{equation}
-\delta(h\rightarrow v)=\sum h_{1}v_{-1}Sh_{3}\otimes h_{2}\rightarrow v_{0}\label{eq:YD}
+\delta(h\rightarrow v)= h_{1}v_{-1}Sh_{3}\otimes h_{2}\rightarrow v_{0}\label{eq:YD}
 \end{equation}
 for all $h\in H$, $v\in V$. 
 \end{definition}
@@ -817,8 +840,8 @@ $(H,m,\mathrm{coadj})$ are Yetter--Drinfeld modules over $H$.
 Prove that~\eqref{eq:YD} can be replaced by 
 \begin{equation}
 \label{eq:left_left_YD_equivalent}
-\sum h_{1}v_{-1}\otimes(h_{2}\rightarrow v_{0})
-=\sum (h_{1}\rightarrow v)_{-1}h_{2}\otimes(h_{1}\rightarrow v)_{0}.
+h_{1}v_{-1}\otimes(h_{2}\rightarrow v_{0})
+=(h_{1}\rightarrow v)_{-1}h_{2}\otimes(h_{1}\rightarrow v)_{0}.
 \end{equation}
 \end{exercise}
 
@@ -838,8 +861,8 @@ $g,h\in H$.
 Let $V$ and $W$ be two Yetter--Drinfeld modules over $H$. Then $V\otimes W$ is a
 Yetter--Drinfeld module over $H$, where 
 \begin{align*}
-h\rightarrow(v\otimes w) & =\sum (h_{1}\rightarrow v)\otimes(h_{2}\rightarrow w),\\
-\delta(v\otimes w) & =\sum v_{-1}w_{-1}\otimes(v_{0}\otimes w_{0})
+h\rightarrow(v\otimes w) & =(h_{1}\rightarrow v)\otimes(h_{2}\rightarrow w),\\
+\delta(v\otimes w) & =v_{-1}w_{-1}\otimes(v_{0}\otimes w_{0})
 \end{align*}
 for all $h\in H$, $v\in V$, $w\in W$.
 \end{exercise}
@@ -848,7 +871,7 @@ Let $H$ be a Hopf algebra with invertible antipode. For any pair $V$ and $W$ of
 Yetter--Drinfeld modules over $H$, we consider the map 
 \begin{align*}
 c_{V,W}\colon V\otimes W&\to W\otimes V\\
-v\otimes w&\mapsto \sum (v_{-1}\rightarrow w)\otimes v_{0}.
+v\otimes w&\mapsto (v_{-1}\rightarrow w)\otimes v_{0}.
 \end{align*}
 
 \begin{proposition}
@@ -859,43 +882,43 @@ The map $c_{V,W}$ is an isomorphism in $\ydH$.
 The map $c$ is invertible and the inverse is 
 \begin{align*}
 c_{V,W}^{-1}:W\otimes V & \to V\otimes W\\
-w\otimes v & \mapsto \sum v_{0}\otimes(S^{-1}(v_{-1})\to w)
+w\otimes v & \mapsto v_{0}\otimes(S^{-1}(v_{-1})\to w)
 \end{align*}
 since
 \begin{align*}
-c_{V,W}^{-1}c_{V,W}(v\otimes w) & =\sum c_{V,W}^{-1}((v_{-1}\to w)\otimes v_{0})\\
- & =\sum v_{0,0}\otimes(S^{-1}(v_{0,-1})\to(v_{-1}\to w))\\
- & =\sum v_{0,0}\otimes(S^{-1}(v_{0,-1})v_{-1}\to w)\\
- & =\sum v_{0}\otimes(S^{-1}(v_{-1})v_{-2}\to w)\\
- & =\sum v_{0}\otimes(\epsilon(v_{-1})1\to w)\\
+c_{V,W}^{-1}c_{V,W}(v\otimes w) & =c_{V,W}^{-1}((v_{-1}\to w)\otimes v_{0})\\
+ & =v_{0,0}\otimes(S^{-1}(v_{0,-1})\to(v_{-1}\to w))\\
+ & =v_{0,0}\otimes(S^{-1}(v_{0,-1})v_{-1}\to w)\\
+ & =v_{0}\otimes(S^{-1}(v_{-1})v_{-2}\to w)\\
+ & =v_{0}\otimes(\epsilon(v_{-1})1\to w)\\
  & =v\otimes w,
 \end{align*}
 and similarly $c_{V,W}c_{V,W}^{-1}(w\otimes v)=w\otimes v$. 
 
 Now we prove that $c_{V,W}$ is a homomorphism of $H$-modules: 
 \begin{align*}
-c_{V,W}(h\rightarrow (v\otimes w))&=\sum c_{V,W}(h_1\rightarrow v\otimes h_2\rightarrow w)\\
-&=\sum (h_1\rightarrow v)_{-1}\rightarrow(h_2\rightarrow w)\otimes(h_1\rightarrow v)_0\\
-&=\sum (h_{11}v_{-1}Sh_{13})\rightarrow(h_2\rightarrow w)\otimes h_{12}\rightarrow v_0\\
-&=\sum (h_1v_{-1}(Sh_3)h_4)\rightarrow w\otimes h_2\rightarrow v_0\\
-&=\sum (h_1v_{-1})\rightarrow w\otimes h_2\rightarrow v_0\\
-&=\sum h_1\rightarrow(v_{-1}\rightarrow w)\otimes h_2\rightarrow v_0\\
-&=\sum h\rightarrow((v_{-1}\rightarrow w)\otimes v_0).
+c_{V,W}(h\rightarrow (v\otimes w))&=c_{V,W}(h_1\rightarrow v\otimes h_2\rightarrow w)\\
+&= (h_1\rightarrow v)_{-1}\rightarrow(h_2\rightarrow w)\otimes(h_1\rightarrow v)_0\\
+&=(h_{11}v_{-1}Sh_{13})\rightarrow(h_2\rightarrow w)\otimes h_{12}\rightarrow v_0\\
+&=(h_1v_{-1}(Sh_3)h_4)\rightarrow w\otimes h_2\rightarrow v_0\\
+&=(h_1v_{-1})\rightarrow w\otimes h_2\rightarrow v_0\\
+&=h_1\rightarrow(v_{-1}\rightarrow w)\otimes h_2\rightarrow v_0\\
+&=h\rightarrow((v_{-1}\rightarrow w)\otimes v_0).
 \end{align*}
 
 To prove that $c_{V,W}$ is a homomorphism of comodules we need $(\id\otimes
 c)\delta=\delta c$.  We compute:
 \[
-(\id\otimes c)\delta(v\otimes w)=\sum v_{-1}w_{-1}\otimes (v_{0,-1}\rightarrow w_0)\otimes v_{0,0}.
+(\id\otimes c)\delta(v\otimes w)=v_{-1}w_{-1}\otimes (v_{0,-1}\rightarrow w_0)\otimes v_{0,0}.
 \]
 On the other hand,
 \begin{align*}
-\delta(c(v\otimes w)&=\sum\delta(v_{-1}\rightarrow w\otimes v_0)\\
-&=\sum (v_{-1}\rightarrow w)_{-1}v_{0,-1}\otimes(v_{-1}\rightarrow w)_0\otimes v_{0,0}\\
-&=\sum (v_{-2}\rightarrow w)_{-1}v_{-1}\otimes (v_{-2}\rightarrow w)_0\otimes v_0\\
-&=\sum v_{-2,1}w_{-1}S(v_{-2,3})v_{-1}\otimes(v_{-2,2}\rightarrow w_0)\otimes v_0\\
-&=\sum v_{-4}w_{-1}S(v_{-2})v_{-1}\otimes (v_{-3}\rightarrow w_0)\otimes v_0\\
-&=\sum v_{-2}w_{-1}\otimes(v_{-1}\rightarrow w_0)\otimes v_0.\qedhere
+\delta(c(v\otimes w)&=\delta(v_{-1}\rightarrow w\otimes v_0)\\
+&=(v_{-1}\rightarrow w)_{-1}v_{0,-1}\otimes(v_{-1}\rightarrow w)_0\otimes v_{0,0}\\
+&=(v_{-2}\rightarrow w)_{-1}v_{-1}\otimes (v_{-2}\rightarrow w)_0\otimes v_0\\
+&=v_{-2,1}w_{-1}S(v_{-2,3})v_{-1}\otimes(v_{-2,2}\rightarrow w_0)\otimes v_0\\
+&=v_{-4}w_{-1}S(v_{-2})v_{-1}\otimes (v_{-3}\rightarrow w_0)\otimes v_0\\
+&=v_{-2}w_{-1}\otimes(v_{-1}\rightarrow w_0)\otimes v_0.\qedhere
 \end{align*}
 \end{proof}
 
