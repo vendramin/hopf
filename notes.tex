@@ -1,21 +1,26 @@
 \documentclass[12pt]{amsproc}
+\usepackage{mynotes}
 
-\newcommand{\course}{Hopf algebras}
+\renewcommand{\course}{Hopf algebras}
 
-\input{mystuff}
-\usetikzlibrary{calc}
-
+% special macros
 \newcommand{\ydH}{\prescript{H}{H}{\mathcal{YD}}}
 \newcommand{\lmod}[1]{\prescript{}{#1}{\mathcal{M}}}
 \newcommand{\rmod}[1]{\mathcal{M}_{#1}}
 \newcommand{\lcomod}[1]{\prescript{#1}{}{\mathcal{M}}}
 \newcommand{\rcomod}[1]{\mathcal{M}^{#1}}
 
-\usetikzlibrary{positioning}
+
+
+\title{\course}
+\author{Leandro Vendramin}
+\address{Department of Mathematics and Data
+Science, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Brussel}
+\email{Leandro.Vendramin@vub.be}
+\thanks{}
+\date{}
 
 \begin{document}
-
-\pagenumbering{roman}
 
 \begin{abstract}
     The notes correspond to the bachelor 
@@ -27,10 +32,19 @@
 
 \maketitle
 
-\setcounter{tocdepth}{1}
-\tableofcontents 
+%\begin{figure}[h]
+%    \includegraphics[scale=0.5]{hungerford.png}
+%\end{figure}
 
-\clearpage
+\thispagestyle{empty}
+
+\setcounter{tocdepth}{1}
+
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+
+\newpage
 \pagenumbering{arabic}
 
 \include{introduction}
@@ -39,25 +53,8 @@
 \input{02}
 \input{03}
 \input{04}
-%\input{05}
-%\input{06}
-%\input{07}
-%\input{08}
-%\input{09}
-%\input{10}
-%\input{11}
-%\input{12}
 
-%\include{magma} 
-\include{solutions}
-
-\newpage 
-
-\fancyhf{}
-\fancyfoot[R]{\thepage}
-\fancyhead[L]{\course}
-\setlength{\headheight}{14pt}
-
+\input{solutions}
 \bibliographystyle{abbrv}
 \bibliography{refs}
 

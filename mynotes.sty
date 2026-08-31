@@ -1,87 +1,91 @@
-\usepackage[foot]{amsaddr} 
-\usepackage{hyperref}
-\usepackage{listings}
-\usepackage{tikz-cd}
-\usepackage{datetime}
-\usepackage{amssymb}
-\usepackage{mathtools}
-\usepackage{stmaryrd}
-\usepackage{mdframed}
-\usepackage{textcomp}
-\usepackage{colortbl}
-\usepackage[most]{tcolorbox}
-%\usepackage{cleveref}
+% ============================================================
+% Usage in the main file:
+%   \documentclass[12pt]{amsproc}
+%   \usepackage{lecturenotes}
+%   \renewcommand{\course}{Ring and module theory}
+%   \title{\course}
+%   \author{...}
+%   ...
+%   \begin{document}
+%   ...
+%   \end{document}
+% ============================================================
 
-%\usepackage{fontspec}
-%\setmainfont{Verdana}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mynotes}[2026/08/30 v1.0 Personal lecture notes style]
 
+% ------------------------------------------------------------
+% Packages
+% ------------------------------------------------------------
+\RequirePackage[foot]{amsaddr}
+\RequirePackage{hyperref}
+\RequirePackage{listings}
+\RequirePackage{tikz-cd}
+\usetikzlibrary{arrows,positioning,shapes}
+\RequirePackage{datetime}
+\RequirePackage{amssymb}
+\RequirePackage{mathtools}
+\RequirePackage{stmaryrd}
+\RequirePackage{mdframed}
+\RequirePackage{textcomp}
+\RequirePackage{colortbl}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage[margin=1in,footskip=.25in]{geometry}
+\RequirePackage{fancyhdr}
+\RequirePackage[english.nosectiondot]{babel}
+
+% For a dyslexia-friendly font, comment the three lines above
+% that load fontspec/OpenDyslexic-related settings are not
+% enabled by default; uncomment and load fontspec + mathptmx/
+% newtxtext instead if needed:
+%\RequirePackage{fontspec}
+%\setmainfont{OpenDyslexic}
+%\RequirePackage{mathptmx}
+%\RequirePackage{newtxtext}
+
+% ------------------------------------------------------------
+% Hyperref setup
+% ------------------------------------------------------------
 \hypersetup{
-  final, 
-  colorlinks, 
-  linkcolor=-red!55!green!50, 
+  final,
+  colorlinks,
+  linkcolor=-red!55!green!50,
   citecolor=blue!50!red,
   urlcolor=green!30!black
 }
 
 \swapnumbers
 
-% For Dyslexic replace the next three lines by 
-%\usepackage{fontspec}
-%\setmainfont{OpenDyslexic}
-%\usepackage{mathptmx}
-%\usepackage{newtxtext}
-
-\usepackage[margin=1in,footskip=.25in]{geometry}
-
 \overfullrule=1mm
 
-\renewcommand\emph[1]{\textcolor{blue!50!red}
-{\bfseries #1}}
+% ------------------------------------------------------------
+% \course: name of the course, shown in the running header and
+% (typically) used for \title{\course}. Give it a default so
+% the package is self-contained; override in the main file with
+% \renewcommand{\course}{...} before \begin{document}.
+% ------------------------------------------------------------
+\providecommand{\course}{}
 
+% ------------------------------------------------------------
+% Emphasis
+% ------------------------------------------------------------
+\renewcommand\emph[1]{\textcolor{blue!50!red}{\bfseries #1}}
+
+% ------------------------------------------------------------
+% Section numbering
+% ------------------------------------------------------------
 \renewcommand\thesection{\arabic{section}}
 \renewcommand\thesubsection{\arabic{section}.\arabic{subsection}}
 
+% ------------------------------------------------------------
+% Table of contents "part" separators
+% ------------------------------------------------------------
+\newcommand{\TOCpart}[1]{\addtocontents{toc}%
+{\bigskip\textcolor{green!40!blue}{\textbf{#1.}}}}
 
-% \lstdefinelanguage{Julia}%
-%   {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
-%       end,export,false,for,function,immutable,import,importall,if,in,%
-%       macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
-%       using,while},%
-%    sensitive=true,%
-%    alsoother={$},%
-%    morecomment=[l]\#,%
-%    morecomment=[n]{\#=}{=\#},%
-%    morestring=[s]{"}{"},%
-%    morestring=[m]{'}{'},%
-% }[keywords,comments,strings]%
-
-% \definecolor{background}{HTML}{F5F5F5}
-% \definecolor{jlstring}{HTML}{880000}%          % julia's strings
-% \definecolor{jlbase}{HTML}{444444}%            % julia's base color
-% \definecolor{jlkeyword}{HTML}{444444}%         % julia's keywords
-% \definecolor{jlliteral}{HTML}{78A960}%         % julia's literals
-% \definecolor{jlbuiltin}{HTML}{397300}%         % julia's built-ins
-% \definecolor{jlmacros}{HTML}{1F7199}%          % julia's macros
-% \definecolor{jlfunctions}{HTML}{444444}%       % julia's functions
-% \definecolor{jlcomment}{HTML}{888888}%         % julia's comments
-% \definecolor{jlstring}{HTML}{880000}%          % julia's strings
-
-
-% \lstset{%
-%     language         = Julia,
-%     basicstyle       = \color{jlstring}\ttfamily\scriptsize,
-%     backgroundcolor  = \color{background},
-%     keywordstyle     = \color{jlkeyword},
-%     stringstyle      = \color{jlstring},
-%     commentstyle     = \color{jlcomment},
-%     showstringspaces = false,
-%     columns=fixed,
-% }
-
-\newcommand{\TOCpart}[1]{\addtocontents{toc}
-{\bigskip\noindent\textcolor{green!40!blue}{\textbf{#1.}}}}
-
-% To put some text with a light pink background
+% ------------------------------------------------------------
+% Pink box for optional comments
+% ------------------------------------------------------------
 \newtcolorbox{eqbox}[1][]
 {
 boxrule=0pt,frame hidden,colback=red!5!white,
@@ -96,36 +100,41 @@ colframe=blue!55!white
 \end{eqbox}
 }
 
+% ------------------------------------------------------------
+% Code listings
+% ------------------------------------------------------------
+\lstdefinelanguage{Magma}{
+    morekeywords={function,end,for,while,if,then,else,elif,return,%
+                  local,true,false,print,forward,procedure,case,%
+                  when,repeat,until,break,continue},
+    sensitive=true,
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+    morestring=[b]"
+}
 
 \lstset{
     language = Magma,
     basicstyle=\ttfamily\small,
     commentstyle=\small,
-    backgroundcolor = \color{gray!20!white},
+    backgroundcolor = \color{gray!8!white},
     showstringspaces = false,
     columns=fixed,
 }
 
-%\renewcommand\sectionname{Lecture}
+% ------------------------------------------------------------
+% Section name used by amsproc's running head (e.g. "Lecture")
+% ------------------------------------------------------------
 \renewcommand\sectionname{\S}
 
-% para enumerar
+% enumerate labels: 1), 2), 3), ...
 \renewcommand{\labelenumi}{\textbf{\arabic{enumi})}}
 
-\usepackage[most]{tcolorbox}
+\makeindex
 
-%\newtcolorbox{mybox}%[colback=red!5!white,colframe=red!75!black]
-% enhanced,
-% boxrule=0pt,frame hidden,
-% %borderline west={4pt}{0pt}{black},
-% %colback={gray!20},
-% sharp corners,
-% left=.5cm
-% %left=18.0pt
-% }
-
-\makeindex             
-
+% ------------------------------------------------------------
+% Macros
+% ------------------------------------------------------------
 \newcommand{\Irr}{\operatorname{Irr}}
 \newcommand{\Ann}{\operatorname{Ann}}
 \newcommand{\op}{\operatorname{op}}
@@ -174,7 +183,6 @@ colframe=blue!55!white
 \newcommand{\ad}[1]{\operatorname{ad}\,#1}
 \newcommand{\A}{\mathbb{A}}
 
-
 % column vector
 \newcount\colveccount
 \newcommand*\colvec[1]{
@@ -193,6 +201,9 @@ colframe=blue!55!white
 \fi
 }
 
+% ------------------------------------------------------------
+% Theorem-like environments
+% ------------------------------------------------------------
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -201,17 +212,13 @@ colframe=blue!55!white
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
-%\newtheorem{examples}[theorem]{Examples}
 \newtheorem{xca}[theorem]{Exercise}
 \newtheorem{bxca}[theorem]{Bonus exercise}
-%\newtheorem{exa}[theorem]{Example}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{que}[theorem]{Question}
 \newtheorem{conj}[theorem]{Conjecture}
 \newtheorem{open}[theorem]{Open problem}
 \newtheorem{convention}[theorem]{Convention}
-
-%\newtheorem{exercise}[theorem]{Exercise}
 
 \theoremstyle{remark}
 \newtheorem*{claim}{Claim}
@@ -219,19 +226,6 @@ colframe=blue!55!white
 \newenvironment{sol}[1]
 {\renewcommand{\qedsymbol}{}\begin{proof}[\ref{#1}]}
   {\end{proof}}
-
-% \newtcolorbox{mybox}{
-% enhanced,
-% boxrule=0pt,frame hidden,
-% %borderline west={4pt}{0pt}{black},
-% %colback={gray!20},
-% sharp corners,
-% left=.5cm
-% %left=18.0pt
-% }
-% \newenvironment{exercise}
-%   {\begin{mybox}\begin{xca}}
-%   {\end{xca}\end{mybox}}
 
 \newenvironment{problem}
 {\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=blue!5!white,
@@ -254,7 +248,7 @@ colframe=blue!55!white]\begin{que}}{\end{que}\end{tcolorbox}}
   before upper={\parindent4mm\noindent},
 colframe=blue!55!white]\begin{conj}}{\end{conj}\end{tcolorbox}}
 
-
+% Mandatory exercises: green background
 \newenvironment{exercise}
 {\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=green!5!white,
   left=.3em, right=.3em, top=-.2em, bottom=.3em,
@@ -262,6 +256,7 @@ colframe=blue!55!white]\begin{conj}}{\end{conj}\end{tcolorbox}}
   before upper={\parindent4mm\noindent},
 colframe=green!55!black]\begin{xca}}{\end{xca}\end{tcolorbox}}
 
+% Optional (bonus) exercises: yellow background
 \newenvironment{bonus}
 {\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=yellow!15!white,
   left=.3em, right=.3em, top=-.2em, bottom=.3em,
@@ -269,26 +264,12 @@ colframe=green!55!black]\begin{xca}}{\end{xca}\end{tcolorbox}}
   before upper={\parindent4mm\noindent},
 colframe=yellow!45!black]\begin{bxca}}{\end{bxca}\end{tcolorbox}}
 
-% \newenvironment{example}
-% {\begin{tcolorbox}[boxrule=0pt,frame hidden,colback=red!5!white,
-%   left=.3em, right=.3em, top=-.2em, bottom=.3em,
-%   beforeafter skip balanced=.4\baselineskip plus 2pt,
-%   before upper={\parindent4mm\noindent},
-% colframe=red!55!black]\begin{exa}}{\end{exa}\end{tcolorbox}}
-
 \numberwithin{figure}{section}
 \numberwithin{equation}{section}
 
-\makeindex
-
-\title{\course}
-\author{Leandro Vendramin}
-\address{Department of Mathematics and Data
-Science, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Brussel}
-\email{Leandro.Vendramin@vub.be}
-\thanks{}
-\date{}
-
+% ------------------------------------------------------------
+% Section / subsection / subsubsection titles
+% ------------------------------------------------------------
 \makeatletter
 \renewcommand\section{\@startsection{section}{1}%
   \z@{.7\linespacing\@plus\linespacing}{.5\linespacing}%
@@ -299,14 +280,15 @@ Science, Vrije Universiteit Brussel, Pleinlaan 2, 1050 Brussel}
 \renewcommand\subsubsection{\@startsection{subsubsection}{3}%
   \normalparindent\z@{-.5em}%
   {\color{green!50!blue}\normalfont\itshape}}
+\makeatother
 
-
-\usepackage{fancyhdr}
+% ------------------------------------------------------------
+% Page style: running header/footer
+% ------------------------------------------------------------
 \pagestyle{fancy}
 \fancyhf{}
 \fancyfoot[R]{\thepage}
 \fancyhead[L]{\course}
-%\fancyhead[R]{\S\thesection}
 \setlength{\headheight}{14pt}
 
-\usepackage[english.nosectiondot]{babel}
+\endinput
